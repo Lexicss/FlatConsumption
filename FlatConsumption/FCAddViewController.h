@@ -32,6 +32,13 @@
 
 @property (strong, nonatomic) NSManagedObjectContext * managedObjectContext;
 @property (unsafe_unretained, nonatomic) id <AddMonthPaymentDelegate> delegate;
+@property (strong, nonatomic) MonthPayment *lastMonthPayment;
+@property (strong, nonatomic) IBOutlet UILabel *lastDate;
+@property (strong, nonatomic) IBOutlet UILabel *lastHotKichenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *lastColdKichenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *lastHotBathLabel;
+@property (strong, nonatomic) IBOutlet UILabel *lastColdBathLabel;
+@property (strong, nonatomic) IBOutlet UILabel *lastEnergyLabel;
 
 - (IBAction)save:(id)sender;
 @end

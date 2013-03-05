@@ -64,6 +64,13 @@
         FCAddViewController *addVC = segue.destinationViewController;
         addVC.delegate = self;
         addVC.managedObjectContext = self.managedObjectContext;
+        
+        NSArray *recodrs = [self.fetchedResultsController fetchedObjects];
+        if ([recodrs count] > 0) {
+            addVC.lastMonthPayment = [recodrs lastObject];
+        } else {
+            addVC.lastMonthPayment = nil;
+        }
     }
 }
 

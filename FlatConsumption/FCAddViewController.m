@@ -9,7 +9,8 @@
 #import "FCAddViewController.h"
 
 #define NUMBERS_ONLY @"1234567890"
-#define CHARACTER_LIMIT 3
+#define CHARACTER_LIMIT 6
+#define LAST @"last %@"
 
 @interface FCAddViewController ()
 @property (strong, nonatomic) NSSet *fieldsSet;
@@ -61,6 +62,17 @@
     [self.energySwitch addTarget:self
                           action:@selector(valueChanged:)
                 forControlEvents:UIControlEventValueChanged];
+    
+    if (self.lastMonthPayment) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        self.lastDate.text = [NSString stringWithFormat:LAST, [formatter stringFromDate:self.lastMonthPayment.date]];
+        self.lastHotKichenLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKichenWaterCount];
+        self.lastColdKichenLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
+        self.lastHotBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
+        self.lastColdBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
+        self.lastEnergyLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
+    }
 }
 
 - (void)didReceiveMemoryWarning

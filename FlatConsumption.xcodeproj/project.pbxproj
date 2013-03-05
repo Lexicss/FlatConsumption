@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */; };
 		84DBFA7916E34A510048A93E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7816E34A510048A93E /* UIKit.framework */; };
 		84DBFA7B16E34A510048A93E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7A16E34A510048A93E /* Foundation.framework */; };
 		84DBFA7D16E34A510048A93E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7C16E34A510048A93E /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCell.h; sourceTree = "<group>"; };
+		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCell.m; sourceTree = "<group>"; };
 		84DBFA7416E34A500048A93E /* FlatConsumption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatConsumption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DBFA7816E34A510048A93E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84DBFA7A16E34A510048A93E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,8 @@
 				84DBFA8116E34A510048A93E /* Supporting Files */,
 				84DBFAB516E3631F0048A93E /* API.h */,
 				84DBFAB616E3631F0048A93E /* API.m */,
+				7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */,
+				7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */,
 			);
 			path = FlatConsumption;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				84DBFAB116E352D20048A93E /* MonthPayment.m in Sources */,
 				84DBFAB716E3631F0048A93E /* API.m in Sources */,
 				84DBFABA16E366980048A93E /* FCAddViewController.m in Sources */,
+				7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +352,7 @@
 				84DBFAA216E34A510048A93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

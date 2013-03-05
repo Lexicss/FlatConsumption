@@ -16,4 +16,13 @@ static const NSString *kEntityName = @"MonthPayment";
     return [kEntityName copy];
 }
 
++ (void) showStandartAlertWithName:(NSString *)name description:(NSString *)description {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:name
+                                                    message:description
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 @end

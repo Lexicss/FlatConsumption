@@ -12,9 +12,12 @@
 #define CHARACTER_LIMIT 6
 #define LAST @"last %@"
 
+static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
+
 @interface FCAddViewController ()
 @property (strong, nonatomic) NSSet *fieldsSet;
 @property (unsafe_unretained, nonatomic) BOOL shoulSelectDate;
+@property (strong, nonatomic) UITextField *focusedField;
 
 
 @end
@@ -45,7 +48,7 @@
     [self.dateTextField setDelegate:self];
     
     self.fieldsSet = [NSSet setWithObjects:
-                      self.hotKichenTextField,
+                      self.hotKitchenTextField,
                       self.coldKitchenTextField,
                       self.hotBathTextField,
                       self.coldBathTextField,
@@ -73,6 +76,7 @@
         self.lastColdBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
         self.lastEnergyLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
     }
+    self.scrollView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +95,7 @@
     for (UITextField *field in self.fieldsSet) {
         if ([field isFirstResponder] && [touch view] != field) {
             [field resignFirstResponder];
+            [self calcDeltaForField:field];
             break;
         }
     }
@@ -98,6 +103,9 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.focusedField resignFirstResponder];
+}
 
 #pragma mark - Textfield Delegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
@@ -112,6 +120,14 @@
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
+    CGRect fullScreen = [[UIScreen mainScreen] bounds];
+    CGFloat overlap = textField.frame.origin.y + textField.frame.size.height + PORTRAIT_KEYBOARD_HEIGHT - fullScreen.size.height;
+    if (overlap > 0) {
+        [self.scrollView setContentOffset:CGPointMake(0, overlap)];
+    } else {
+        [self.scrollView setContentOffset:CGPointZero];
+    }
+    
     if (textField == self.dateTextField) {
         [self setShoulSelectDate:YES];
     } else {
@@ -119,7 +135,15 @@
             [self putDate];
         }
     }
+    self.focusedField = textField;
 }
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if ([self.fieldsSet containsObject:textField]) {
+        [self calcDeltaForField:textField];
+    }
+}
+
 
 #pragma mark - Actions
 
@@ -143,7 +167,7 @@
     MonthPayment *monthPayment = [NSEntityDescription insertNewObjectForEntityForName:[API entityName]
                                                                inManagedObjectContext:self.managedObjectContext];
     monthPayment.date = [self.pickerInputView date];
-    monthPayment.hotKichenWaterCount = [NSNumber numberWithInt:[[self.hotKichenTextField text] integerValue]];
+    monthPayment.hotKichenWaterCount = [NSNumber numberWithInt:[[self.hotKitchenTextField text] integerValue]];
     monthPayment.coldKitchenWaterCount = [NSNumber numberWithInt:[[self.coldKitchenTextField text] integerValue]];
     
     monthPayment.hotBathWaterCount = [NSNumber numberWithInt:[[self.hotBathTextField text] integerValue]];
@@ -171,11 +195,26 @@
 #pragma mark - Custom
 
 - (void)putDate {
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:self.lastMonthPayment.date toDate:self.pickerInputView.date options:0];
+    if ([components day] == 0) {
+        [API showStandartAlertWithName:@"Wrong date" description:@"You chose the same last date"];
+        return;
+    } else if ([components day] < 0) {
+        [API showStandartAlertWithName:@"Wrong date" description:@"You chose previous date then last"];
+        return;
+    }
+    
     self.selectedDate = [self.pickerInputView date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [self.dateTextField setText:[formatter stringFromDate:self.selectedDate]];
+    NSString *initialText = [formatter stringFromDate:self.selectedDate];
+    [self.dateTextField setText:initialText];
     [self setShoulSelectDate:NO];
+    
+    initialText = [formatter stringFromDate:self.lastMonthPayment.date];
+    [self.lastDate setText:[NSString stringWithFormat:@"%@ (%d days)",initialText,[components day]]];
 }
 
 - (BOOL)areAllFullFilled {
@@ -190,6 +229,39 @@
         }
     }
     return YES;
+}
+
+- (void)calcDeltaForField:(UITextField *)field {
+    if ([field.text isEqualToString:@""]) {
+        return;
+    }
+    NSString *initialText;
+    if ([field isEqual:self.hotKitchenTextField]) {
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKichenWaterCount];
+        NSInteger last = [self.lastMonthPayment.hotKichenWaterCount integerValue];
+        NSInteger current = [[self.hotKitchenTextField text] integerValue];
+        self.lastHotKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
+    } else if ([field isEqual:self.coldKitchenTextField]) {
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
+        NSInteger last = [self.lastMonthPayment.coldKitchenWaterCount integerValue];
+        NSInteger current = [[self.coldKitchenTextField text] integerValue];
+        self.lastColdKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
+    } else if ([field isEqual:self.hotBathTextField]) {
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
+        NSInteger last = [self.lastMonthPayment.hotBathWaterCount integerValue];
+        NSInteger current = [[self.hotBathTextField text] integerValue];
+        self.lastHotBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
+    } else if ([field isEqual:self.coldBathTextField]) {
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
+        NSInteger last = [self.lastMonthPayment.coldBathWaterCount integerValue];
+        NSInteger current = [[self.coldBathTextField text] integerValue];
+        self.lastColdBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
+    } else if ([field isEqual:self.energyTextField]) {
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
+        NSInteger last = [self.lastMonthPayment.energyCount integerValue];
+        NSInteger current = [[self.energyTextField text] integerValue];
+        self.lastEnergyLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
+    }
 }
 
 @end

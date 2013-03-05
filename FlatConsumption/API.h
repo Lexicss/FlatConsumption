@@ -12,5 +12,5 @@
 @interface API : NSObject
 
 + (NSString *) entityName;
-
++ (void) showStandartAlertWithName:(NSString *)name description:(NSString *)description;
 @end

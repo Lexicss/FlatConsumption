@@ -17,11 +17,11 @@
 
 @end
 
-@interface FCAddViewController : UIViewController<UITextFieldDelegate>
+@interface FCAddViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 @property (strong, nonatomic) UIDatePicker *pickerInputView;
 @property (strong, nonatomic) NSDate *selectedDate;
-@property (weak, nonatomic) IBOutlet UITextField *hotKichenTextField;
+@property (weak, nonatomic) IBOutlet UITextField *hotKitchenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *coldKitchenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *hotBathTextField;
 @property (weak, nonatomic) IBOutlet UITextField *coldBathTextField;
@@ -39,6 +39,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lastHotBathLabel;
 @property (strong, nonatomic) IBOutlet UILabel *lastColdBathLabel;
 @property (strong, nonatomic) IBOutlet UILabel *lastEnergyLabel;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)save:(id)sender;
 @end

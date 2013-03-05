@@ -9,7 +9,7 @@
         <attribute name="energyCountNew" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="energyCountOld" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="hotBathWaterCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="hotKichenWaterCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="hotKitchenWaterCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="MonthPayment" positionX="160" positionY="192" width="128" height="180"/>

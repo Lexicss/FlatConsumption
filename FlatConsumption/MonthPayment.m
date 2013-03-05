@@ -2,7 +2,7 @@
 //  MonthPayment.m
 //  FlatConsumption
 //
-//  Created by Lexicss on 03.03.13.
+//  Created by Aliaksei_Maiorau on 3/5/13.
 //  Copyright (c) 2013 Lexicss. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 @implementation MonthPayment
 
-@dynamic date;
-@dynamic hotKichenWaterCount;
-@dynamic coldKitchenWaterCount;
-@dynamic hotBathWaterCount;
 @dynamic coldBathWaterCount;
+@dynamic coldKitchenWaterCount;
+@dynamic date;
 @dynamic energyCount;
 @dynamic energyCountChanged;
-@dynamic energyCountOld;
 @dynamic energyCountNew;
+@dynamic energyCountOld;
+@dynamic hotBathWaterCount;
+@dynamic hotKitchenWaterCount;
 
 @end

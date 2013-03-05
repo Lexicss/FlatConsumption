@@ -26,13 +26,58 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	NSLog(@"We have %d objects", [API monthPayments].count);
+    NSArray *payments = [API monthPayments];
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateStyle:NSDateFormatterShortStyle];
+    
+    NSString *key = @"hotKitchenWaterCount";
+    NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:payments];
+    
+    if (index > 0) {
+        MonthPayment *prev = payments[index - 1];
+        MonthPayment *cur = payments[index];
+        NSInteger delta = [self deltaForKey:key withIndex:index inArray:payments];
+        self.hotKitchenLabel.text = [NSString stringWithFormat:@"From %@ to %@ - %d",[f stringFromDate:prev.date], [f stringFromDate:cur.date], delta];
+    }
+    
+    key = @"coldKitchenWaterCount";
+    index = [self indexOfMaxConsumptionForKey:key withArray:payments];
+    if (index > 0) {
+        MonthPayment *prev = payments[index - 1];
+        MonthPayment *cur = payments[index];
+        NSInteger delta = [self deltaForKey:key withIndex:index inArray:payments];
+        self.coldKitchenLabel.text = [NSString stringWithFormat:@"From %@ to %@ - %d",[f stringFromDate:prev.date], [f stringFromDate:cur.date], delta];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)indexOfMaxConsumptionForKey:(NSString *)key withArray:(NSArray *)array {
+    
+    //find the maximum hot Kitchen
+    NSInteger maxHotDelta = 0;
+    NSInteger index = 0;
+    for (NSInteger i = 1; i < [array count]; i++) {
+        NSInteger delta = [self deltaForKey:key withIndex:i inArray:array];
+        if (delta > maxHotDelta) {
+            index = i;
+            maxHotDelta = delta;
+        }
+    }
+    return index;
+}
+
+- (NSInteger)deltaForKey:(NSString *)key withIndex:(NSInteger)index inArray:(NSArray *)array {
+    MonthPayment *previousPayment = array[index-1];
+    MonthPayment *currentPayment = array[index];
+    NSInteger curValue = [[currentPayment valueForKey:key] integerValue];
+    NSInteger prevValue = [[previousPayment valueForKey:key] integerValue];
+    return curValue - prevValue;
 }
 
 @end

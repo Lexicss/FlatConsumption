@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "API.h"
+#import "MonthPayment.h"
 
 @interface FCMainViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *hotKitchenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *coldKitchenLabel;
 @end

@@ -31,6 +31,8 @@
 /* Begin PBXFileReference section */
 		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCell.h; sourceTree = "<group>"; };
 		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCell.m; sourceTree = "<group>"; };
+		7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPayment.h; sourceTree = "<group>"; };
+		7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPayment.m; sourceTree = "<group>"; };
 		84DBFA7416E34A500048A93E /* FlatConsumption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatConsumption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DBFA7816E34A510048A93E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84DBFA7A16E34A510048A93E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,8 @@
 				84DBFA8A16E34A510048A93E /* FCAppDelegate.m */,
 				84DBFA9216E34A510048A93E /* MainStoryboard.storyboard */,
 				84DBFA9516E34A510048A93E /* FlatConsumption.xcdatamodeld */,
+				7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */,
+				7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */,
 				84DBFA8116E34A510048A93E /* Supporting Files */,
 				84DBFAB516E3631F0048A93E /* API.h */,
 				84DBFAB616E3631F0048A93E /* API.m */,
@@ -317,6 +321,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlatConsumption/FlatConsumption-Prefix.pch";
 				INFOPLIST_FILE = "FlatConsumption/FlatConsumption-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -328,6 +333,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlatConsumption/FlatConsumption-Prefix.pch";
 				INFOPLIST_FILE = "FlatConsumption/FlatConsumption-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -13,4 +13,8 @@
 
 + (NSString *) entityName;
 + (void) showStandartAlertWithName:(NSString *)name description:(NSString *)description;
+
++ (NSArray *)monthPayments;
++ (void)setMonthPayments:(NSArray *)amonthPayments;
+
 @end

@@ -9,6 +9,7 @@
 #import "API.h"
 
 static const NSString *kEntityName = @"MonthPayment";
+static NSArray *monthPayments;
 
 @implementation API
 
@@ -23,6 +24,16 @@ static const NSString *kEntityName = @"MonthPayment";
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
++ (NSArray *)monthPayments {
+    return monthPayments;
+}
+
++ (void)setMonthPayments:(NSArray *)amonthPayments {
+    if (monthPayments != amonthPayments) {
+        monthPayments = amonthPayments;
+    }
 }
 
 @end

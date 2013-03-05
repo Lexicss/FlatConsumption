@@ -70,7 +70,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         self.lastDate.text = [NSString stringWithFormat:LAST, [formatter stringFromDate:self.lastMonthPayment.date]];
-        self.lastHotKichenLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKichenWaterCount];
+        self.lastHotKichenLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKitchenWaterCount];
         self.lastColdKichenLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
         self.lastHotBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
         self.lastColdBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
@@ -155,19 +155,15 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 - (IBAction)save:(id)sender {
     
     if (![self areAllFullFilled]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not all fields completed"
-                                                        message:@"Please fullfill necessary fields"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [API showStandartAlertWithName:@"Not all fields completed"
+                           description:@"Please fullfill necessary fields"];
         return;
     }
     
     MonthPayment *monthPayment = [NSEntityDescription insertNewObjectForEntityForName:[API entityName]
                                                                inManagedObjectContext:self.managedObjectContext];
     monthPayment.date = [self.pickerInputView date];
-    monthPayment.hotKichenWaterCount = [NSNumber numberWithInt:[[self.hotKitchenTextField text] integerValue]];
+    monthPayment.hotKitchenWaterCount = [NSNumber numberWithInt:[[self.hotKitchenTextField text] integerValue]];
     monthPayment.coldKitchenWaterCount = [NSNumber numberWithInt:[[self.coldKitchenTextField text] integerValue]];
     
     monthPayment.hotBathWaterCount = [NSNumber numberWithInt:[[self.hotBathTextField text] integerValue]];
@@ -237,8 +233,8 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     }
     NSString *initialText;
     if ([field isEqual:self.hotKitchenTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKichenWaterCount];
-        NSInteger last = [self.lastMonthPayment.hotKichenWaterCount integerValue];
+        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKitchenWaterCount];
+        NSInteger last = [self.lastMonthPayment.hotKitchenWaterCount integerValue];
         NSInteger current = [[self.hotKitchenTextField text] integerValue];
         self.lastHotKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.coldKitchenTextField]) {

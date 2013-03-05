@@ -19,6 +19,7 @@
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     [self performFetch];
+    [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,7 +43,7 @@
     
     NSString *dateText = [NSString stringWithFormat:@"%@, ",[f stringFromDate:mp.date]];;
     cell.textLabel.text = [NSString stringWithFormat:@"Kithen:%@;%@ Bath:%@;%@ Enr:%@",
-                           mp.hotKichenWaterCount,
+                           mp.hotKitchenWaterCount,
                            mp.coldKitchenWaterCount,
                            mp.hotBathWaterCount,
                            mp.coldBathWaterCount,
@@ -77,6 +78,7 @@
 #pragma mark - AddMonthPayment Delegate
 
 - (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller {
+    [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
     [controller.navigationController popViewControllerAnimated:YES];
 }
 

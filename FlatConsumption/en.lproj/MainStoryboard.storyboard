@@ -4,16 +4,78 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Item 2-->
+        <!--Main View Controller - Item 2-->
         <scene sceneID="JvA-ip-Dab">
             <objects>
-                <viewController id="h72-VM-gKh" sceneMemberID="viewController">
+                <viewController id="h72-VM-gKh" customClass="FCMainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vT-qX-w1n">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Kitchen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-na-L0n">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="311" id="TNR-us-fGZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Consumptions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8as-Cu-SVQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="PPg-PF-H8i"/>
+                                    <constraint firstAttribute="width" constant="303" id="n1I-6P-R76"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cold:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upk-Do-fKi">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hot:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-Uy-v7A">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="luv-2h-m7V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdS-qD-hNx">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk5-dG-6u5">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B2J-Uy-v7A" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="75" id="1Ux-Fd-dTw"/>
+                            <constraint firstItem="B2J-Uy-v7A" firstAttribute="leading" secondItem="8as-Cu-SVQ" secondAttribute="leading" type="default" id="2aN-5p-Sh4"/>
+                            <constraint firstItem="aEO-na-L0n" firstAttribute="centerX" secondItem="4vT-qX-w1n" secondAttribute="centerX" type="default" id="9HL-xb-mHj"/>
+                            <constraint firstItem="aEO-na-L0n" firstAttribute="centerX" secondItem="8as-Cu-SVQ" secondAttribute="centerX" type="default" id="AqF-bQ-xki"/>
+                            <constraint firstItem="aEO-na-L0n" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="47" id="D9g-OK-5Qu"/>
+                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="WdS-qD-hNx" secondAttribute="leading" type="default" id="LO7-Ik-rJ9"/>
+                            <constraint firstItem="B2J-Uy-v7A" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="leading" type="default" id="PNt-jh-AQw"/>
+                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="top" secondItem="Upk-Do-fKi" secondAttribute="top" type="default" id="RbE-J3-zPV"/>
+                            <constraint firstItem="8as-Cu-SVQ" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="9" id="VVd-Cn-e7a"/>
+                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="di9-KQ-ZWy"/>
+                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="baseline" secondItem="Upk-Do-fKi" secondAttribute="baseline" type="default" id="fQ6-uq-8hX"/>
+                            <constraint firstItem="WdS-qD-hNx" firstAttribute="top" secondItem="aEO-na-L0n" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rwZ-PP-xca"/>
+                            <constraint firstItem="Upk-Do-fKi" firstAttribute="top" secondItem="B2J-Uy-v7A" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sye-NB-gYt"/>
+                            <constraint firstItem="WdS-qD-hNx" firstAttribute="leading" secondItem="B2J-Uy-v7A" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="v6U-IB-ZKw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="DHl-Mp-agu"/>
+                    <connections>
+                        <outlet property="coldKitchenLabel" destination="Hk5-dG-6u5" id="G89-0d-bDv"/>
+                        <outlet property="hotKitchenLabel" destination="WdS-qD-hNx" id="Ch9-oU-lMZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCh-tG-0fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

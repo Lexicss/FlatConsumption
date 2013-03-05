@@ -32,11 +32,22 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    MonthPayment *monthPayment = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[monthPayment coldKitchenWaterCount]];
+    MonthPayment *mp = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateStyle:NSDateFormatterMediumStyle];
+    
+    NSString *dateText = [NSString stringWithFormat:@"%@, ",[f stringFromDate:mp.date]];;
+    cell.textLabel.text = [NSString stringWithFormat:@"Kithen:%@;%@ Bath:%@;%@ Enr:%@",
+                           mp.hotKichenWaterCount,
+                           mp.coldKitchenWaterCount,
+                           mp.hotBathWaterCount,
+                           mp.coldBathWaterCount,
+                           mp.energyCount];
+    cell.detailTextLabel.text = dateText;
     return cell;
 }
 
@@ -46,6 +57,20 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"%d records", [self.fetchedResultsController.fetchedObjects count]];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Add Payment Segue"]) {
+        FCAddViewController *addVC = segue.destinationViewController;
+        addVC.delegate = self;
+        addVC.managedObjectContext = self.managedObjectContext;
+    }
+}
+
+#pragma mark - AddMonthPayment Delegate
+
+- (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller {
+    [controller.navigationController popViewControllerAnimated:YES];
 }
 
 @end

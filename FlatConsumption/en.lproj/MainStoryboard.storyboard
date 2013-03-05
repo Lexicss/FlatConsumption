@@ -28,12 +28,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YSZ-nw-j1g">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7Yx-kn-HOI" detailTextLabel="Dcp-0S-Si6" style="IBUITableViewCellStyleSubtitle" id="YSZ-nw-j1g">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-kn-HOI">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcp-0S-Si6">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -42,7 +54,7 @@
                     <navigationItem key="navigationItem" title="Month Payments" id="QME-Dp-UC8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9dz-zD-XRs">
                             <connections>
-                                <segue destination="1fq-hc-uor" kind="push" id="oIA-3a-BE1"/>
+                                <segue destination="1fq-hc-uor" kind="push" identifier="Add Payment Segue" id="oIA-3a-BE1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,29 +97,78 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yjq-AG-As1"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Counter Changed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-q9-qsA">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QHA-tT-4XQ"/>
+                                    <constraint firstAttribute="width" constant="148" id="QcQ-Ky-0OR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="from" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fjm-4d-U1w">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="NFx-H3-xxb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="to" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wPF-SZ-Q7g">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="energy" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6G-sI-29d">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="izS-aI-JHw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Px6-7s-e3q" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="163" id="47H-Tv-l55"/>
                             <constraint firstItem="jfH-iZ-mDe" firstAttribute="trailing" secondItem="Px6-7s-e3q" secondAttribute="trailing" type="default" id="70S-13-Owy"/>
-                            <constraint firstItem="Px6-7s-e3q" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="163" id="GfV-Ps-OAn"/>
+                            <constraint firstItem="yjq-AG-As1" firstAttribute="top" secondItem="g7K-Gq-S3H" secondAttribute="top" type="default" id="9yI-lw-12K"/>
+                            <constraint firstItem="Fjm-4d-U1w" firstAttribute="baseline" secondItem="Px6-7s-e3q" secondAttribute="baseline" type="default" id="LVf-Mo-PGg"/>
                             <constraint firstItem="jfH-iZ-mDe" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NNZ-GE-kYD"/>
                             <constraint firstItem="wol-1o-IRB" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="PcH-az-7hG"/>
                             <constraint firstItem="Px6-7s-e3q" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="S3z-Ya-EVh"/>
+                            <constraint firstItem="wPF-SZ-Q7g" firstAttribute="baseline" secondItem="jfH-iZ-mDe" secondAttribute="baseline" type="default" id="ThG-Oz-yMm"/>
+                            <constraint firstItem="yjq-AG-As1" firstAttribute="centerX" secondItem="Fjm-4d-U1w" secondAttribute="centerX" type="default" id="WeI-Pa-R5s"/>
+                            <constraint firstItem="jfH-iZ-mDe" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="206" id="XyX-RJ-QdQ"/>
                             <constraint firstItem="g7K-Gq-S3H" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="XzB-2r-fJ4"/>
+                            <constraint firstItem="Fjm-4d-U1w" firstAttribute="leading" secondItem="elv-q9-qsA" secondAttribute="leading" type="default" id="ad0-mb-5Dq"/>
                             <constraint firstItem="Px6-7s-e3q" firstAttribute="trailing" secondItem="g7K-Gq-S3H" secondAttribute="trailing" type="default" id="bTM-Hu-6UW"/>
                             <constraint firstItem="g7K-Gq-S3H" firstAttribute="top" secondItem="wol-1o-IRB" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bW0-4U-JeQ"/>
-                            <constraint firstItem="jfH-iZ-mDe" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="206" id="cyM-97-P2N"/>
                             <constraint firstItem="wol-1o-IRB" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="66" id="cye-SD-Zap"/>
                             <constraint firstItem="a0F-OH-6B2" firstAttribute="top" secondItem="0Uo-GI-bMI" secondAttribute="top" constant="20" symbolic="YES" type="default" id="jTw-Lj-Vpo"/>
+                            <constraint firstItem="yjq-AG-As1" firstAttribute="top" secondItem="elv-q9-qsA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="l0F-Pq-jww"/>
+                            <constraint firstItem="u6G-sI-29d" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nfC-JS-sqY"/>
+                            <constraint firstItem="u6G-sI-29d" firstAttribute="top" secondItem="jfH-iZ-mDe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pSU-Xa-bVl"/>
                             <constraint firstItem="g7K-Gq-S3H" firstAttribute="trailing" secondItem="wol-1o-IRB" secondAttribute="trailing" type="default" id="qv6-Ea-3IN"/>
+                            <constraint firstItem="wPF-SZ-Q7g" firstAttribute="leading" secondItem="Fjm-4d-U1w" secondAttribute="leading" type="default" id="uyU-Kj-a4p"/>
+                            <constraint firstItem="wPF-SZ-Q7g" firstAttribute="trailing" secondItem="Fjm-4d-U1w" secondAttribute="trailing" type="default" id="xIY-Hz-QxC"/>
                             <constraint firstItem="a0F-OH-6B2" firstAttribute="leading" secondItem="0Uo-GI-bMI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="yZA-MM-1SN"/>
+                            <constraint firstItem="u6G-sI-29d" firstAttribute="trailing" secondItem="wPF-SZ-Q7g" secondAttribute="trailing" type="default" id="zE0-nj-Ug2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Payment" id="LOM-5m-dNW"/>
+                    <navigationItem key="navigationItem" title="Add Payment" id="LOM-5m-dNW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gcb-Ft-jYo">
+                            <connections>
+                                <action selector="save:" destination="1fq-hc-uor" id="Zgh-2d-aa6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="coldBathTextField" destination="jfH-iZ-mDe" id="aid-6d-Zx8"/>
                         <outlet property="coldKitchenTextField" destination="g7K-Gq-S3H" id="OWZ-M1-gYr"/>
                         <outlet property="dateTextField" destination="a0F-OH-6B2" id="W1q-OJ-He4"/>
+                        <outlet property="energyFromTextField" destination="Fjm-4d-U1w" id="aAP-cE-TxV"/>
+                        <outlet property="energySwitch" destination="yjq-AG-As1" id="7h4-1o-1rq"/>
+                        <outlet property="energyTextField" destination="u6G-sI-29d" id="wZz-vu-tY1"/>
+                        <outlet property="energyToTextField" destination="wPF-SZ-Q7g" id="X4C-Ha-MUS"/>
                         <outlet property="hotBathTextField" destination="Px6-7s-e3q" id="UhA-r4-VqQ"/>
                         <outlet property="hotKichenTextField" destination="wol-1o-IRB" id="hTK-iO-HOo"/>
                     </connections>
@@ -159,9 +220,14 @@
         <class className="FCAddViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FCAddViewController.h"/>
             <relationships>
+                <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="coldBathTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="coldKitchenTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyFromTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energySwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="energyTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyToTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="hotBathTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="hotKichenTextField" candidateClass="UITextField"/>
             </relationships>

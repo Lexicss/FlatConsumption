@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MonthPayment.h"
+#import "API.h"
+
+@class FCAddViewController;
+@protocol AddMonthPaymentDelegate <NSObject>
+
+- (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller;
+
+@end
 
 @interface FCAddViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
@@ -16,5 +25,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *coldKitchenTextField;
 @property (weak, nonatomic) IBOutlet UITextField *hotBathTextField;
 @property (weak, nonatomic) IBOutlet UITextField *coldBathTextField;
+@property (strong, nonatomic) IBOutlet UITextField *energyTextField;
+@property (strong, nonatomic) IBOutlet UISwitch *energySwitch;
+@property (strong, nonatomic) IBOutlet UITextField *energyFromTextField;
+@property (strong, nonatomic) IBOutlet UITextField *energyToTextField;
 
+@property (strong, nonatomic) NSManagedObjectContext * managedObjectContext;
+@property (unsafe_unretained, nonatomic) id <AddMonthPaymentDelegate> delegate;
+
+- (IBAction)save:(id)sender;
 @end

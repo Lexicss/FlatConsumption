@@ -31,24 +31,14 @@
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateStyle:NSDateFormatterShortStyle];
     
-    NSString *key = @"hotKitchenWaterCount";
-    NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:payments];
-    
-    if (index > 0) {
-        MonthPayment *prev = payments[index - 1];
-        MonthPayment *cur = payments[index];
-        NSInteger delta = [self deltaForKey:key withIndex:index inArray:payments];
-        self.hotKitchenLabel.text = [NSString stringWithFormat:@"From %@ to %@ - %d",[f stringFromDate:prev.date], [f stringFromDate:cur.date], delta];
-    }
-    
-    key = @"coldKitchenWaterCount";
-    index = [self indexOfMaxConsumptionForKey:key withArray:payments];
-    if (index > 0) {
-        MonthPayment *prev = payments[index - 1];
-        MonthPayment *cur = payments[index];
-        NSInteger delta = [self deltaForKey:key withIndex:index inArray:payments];
-        self.coldKitchenLabel.text = [NSString stringWithFormat:@"From %@ to %@ - %d",[f stringFromDate:prev.date], [f stringFromDate:cur.date], delta];
-    }
+    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments withFormat:f];
+    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments withFormat:f];
+    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments withFormat:f];
+    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments withFormat:f];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,6 +68,21 @@
     NSInteger curValue = [[currentPayment valueForKey:key] integerValue];
     NSInteger prevValue = [[previousPayment valueForKey:key] integerValue];
     return curValue - prevValue;
+}
+
+- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array withFormat:(NSDateFormatter *)formatter{
+    NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:array];
+    NSString *resultText;
+    if (index > 0) {
+        MonthPayment *prev = array[index - 1];
+        MonthPayment *cur = array[index];
+        NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
+        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [formatter stringFromDate:prev.date], [formatter stringFromDate:cur.date], delta];
+    } else {
+        resultText = @"";
+    }
+    
+    return resultText;
 }
 
 @end

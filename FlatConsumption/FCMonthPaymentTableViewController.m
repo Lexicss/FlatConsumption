@@ -78,6 +78,7 @@
 #pragma mark - AddMonthPayment Delegate
 
 - (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller {
+    NSLog(@"objects are: %d", [self.fetchedResultsController.fetchedObjects count]);
     [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
     [controller.navigationController popViewControllerAnimated:YES];
 }

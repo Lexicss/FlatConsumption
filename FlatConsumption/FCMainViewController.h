@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *hotKitchenLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coldKitchenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *hotBathLabel;
+@property (strong, nonatomic) IBOutlet UILabel *coldBathLabel;
 @end

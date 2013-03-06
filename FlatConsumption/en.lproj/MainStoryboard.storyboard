@@ -36,7 +36,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hot:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-Uy-v7A">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="luv-2h-m7V"/>
+                                    <constraint firstAttribute="width" constant="42" id="uRM-MB-vhj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -52,28 +52,68 @@
                                 <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-3P-h8p">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hot:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-Kn-Zp3">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cold:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kw-Na-Tt0">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bg2-9y-lgb">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWj-yB-nHo">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Kw-Na-Tt0" firstAttribute="top" secondItem="yXT-Kn-Zp3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0e0-Cm-bBH"/>
                             <constraint firstItem="B2J-Uy-v7A" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="75" id="1Ux-Fd-dTw"/>
                             <constraint firstItem="B2J-Uy-v7A" firstAttribute="leading" secondItem="8as-Cu-SVQ" secondAttribute="leading" type="default" id="2aN-5p-Sh4"/>
-                            <constraint firstItem="aEO-na-L0n" firstAttribute="centerX" secondItem="4vT-qX-w1n" secondAttribute="centerX" type="default" id="9HL-xb-mHj"/>
+                            <constraint firstItem="kWj-yB-nHo" firstAttribute="baseline" secondItem="9Kw-Na-Tt0" secondAttribute="baseline" type="default" id="3lC-uk-sSq"/>
+                            <constraint firstItem="yXT-Kn-Zp3" firstAttribute="leading" secondItem="TaK-3P-h8p" secondAttribute="leading" type="default" id="AqE-0p-QaS"/>
                             <constraint firstItem="aEO-na-L0n" firstAttribute="centerX" secondItem="8as-Cu-SVQ" secondAttribute="centerX" type="default" id="AqF-bQ-xki"/>
                             <constraint firstItem="aEO-na-L0n" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="47" id="D9g-OK-5Qu"/>
+                            <constraint firstItem="TaK-3P-h8p" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="leading" type="default" id="Ddd-UT-Yeu"/>
+                            <constraint firstItem="Bg2-9y-lgb" firstAttribute="leading" secondItem="Hk5-dG-6u5" secondAttribute="leading" type="default" id="GME-qO-0F9"/>
+                            <constraint firstItem="Bg2-9y-lgb" firstAttribute="leading" secondItem="yXT-Kn-Zp3" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="LKl-CZ-uCS"/>
                             <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="WdS-qD-hNx" secondAttribute="leading" type="default" id="LO7-Ik-rJ9"/>
+                            <constraint firstItem="kWj-yB-nHo" firstAttribute="leading" secondItem="9Kw-Na-Tt0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="NY8-8a-uyN"/>
+                            <constraint firstItem="Bg2-9y-lgb" firstAttribute="baseline" secondItem="yXT-Kn-Zp3" secondAttribute="baseline" type="default" id="OjV-xs-v9N"/>
                             <constraint firstItem="B2J-Uy-v7A" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="leading" type="default" id="PNt-jh-AQw"/>
                             <constraint firstItem="Hk5-dG-6u5" firstAttribute="top" secondItem="Upk-Do-fKi" secondAttribute="top" type="default" id="RbE-J3-zPV"/>
+                            <constraint firstItem="TaK-3P-h8p" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="152" id="VN5-pe-YK1"/>
                             <constraint firstItem="8as-Cu-SVQ" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="9" id="VVd-Cn-e7a"/>
+                            <constraint firstItem="kWj-yB-nHo" firstAttribute="leading" secondItem="Bg2-9y-lgb" secondAttribute="leading" type="default" id="WQG-n1-l38"/>
+                            <constraint firstItem="TaK-3P-h8p" firstAttribute="trailing" secondItem="8as-Cu-SVQ" secondAttribute="trailing" type="default" id="WiG-YK-e0H"/>
                             <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="di9-KQ-ZWy"/>
                             <constraint firstItem="Hk5-dG-6u5" firstAttribute="baseline" secondItem="Upk-Do-fKi" secondAttribute="baseline" type="default" id="fQ6-uq-8hX"/>
+                            <constraint firstItem="yXT-Kn-Zp3" firstAttribute="top" secondItem="TaK-3P-h8p" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="or1-AL-B45"/>
+                            <constraint firstItem="TaK-3P-h8p" firstAttribute="centerX" secondItem="4vT-qX-w1n" secondAttribute="centerX" type="default" id="peG-FC-or6"/>
                             <constraint firstItem="WdS-qD-hNx" firstAttribute="top" secondItem="aEO-na-L0n" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rwZ-PP-xca"/>
                             <constraint firstItem="Upk-Do-fKi" firstAttribute="top" secondItem="B2J-Uy-v7A" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sye-NB-gYt"/>
                             <constraint firstItem="WdS-qD-hNx" firstAttribute="leading" secondItem="B2J-Uy-v7A" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="v6U-IB-ZKw"/>
+                            <constraint firstItem="9Kw-Na-Tt0" firstAttribute="leading" secondItem="yXT-Kn-Zp3" secondAttribute="leading" type="default" id="xGM-L8-0Q6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="DHl-Mp-agu"/>
                     <connections>
+                        <outlet property="coldBathLabel" destination="kWj-yB-nHo" id="eRl-O0-9pd"/>
                         <outlet property="coldKitchenLabel" destination="Hk5-dG-6u5" id="G89-0d-bDv"/>
+                        <outlet property="hotBathLabel" destination="Bg2-9y-lgb" id="T7a-Kn-mrC"/>
                         <outlet property="hotKitchenLabel" destination="WdS-qD-hNx" id="Ch9-oU-lMZ"/>
                     </connections>
                 </viewController>

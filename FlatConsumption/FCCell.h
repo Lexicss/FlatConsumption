@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface FCCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *hotKitchenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *coldKitchenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *hotBathLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *coldBathLabel;
+@property (strong, nonatomic) IBOutlet UILabel *energyLabel;
 
 @end

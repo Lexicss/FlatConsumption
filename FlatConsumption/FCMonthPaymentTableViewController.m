@@ -8,6 +8,9 @@
 
 #import "FCMonthPaymentTableViewController.h"
 
+#define DATE_FONT [UIFont fontWithName:@"Baskerville-BoldItalic" size:17]
+#define ENERGY_FONT [UIFont fontWithName:@"MarkerFelt-Thin" size:22]
+
 @implementation FCMonthPaymentTableViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -30,10 +33,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Month Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FCCell *cell = (FCCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[FCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.dateLabel.font = [UIFont fontWithName:@"Baskerville-BoldItalic" size:17];
     }
     
     MonthPayment *mp = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -41,14 +47,23 @@
     NSDateFormatter *f = [[NSDateFormatter alloc] init];
     [f setDateStyle:NSDateFormatterMediumStyle];
     
-    NSString *dateText = [NSString stringWithFormat:@"%@, ",[f stringFromDate:mp.date]];;
-    cell.textLabel.text = [NSString stringWithFormat:@"Kithen:%@;%@ Bath:%@;%@ Enr:%@",
-                           mp.hotKitchenWaterCount,
-                           mp.coldKitchenWaterCount,
-                           mp.hotBathWaterCount,
-                           mp.coldBathWaterCount,
-                           mp.energyCount];
-    cell.detailTextLabel.text = dateText;
+    NSDateComponents *components = [API sharedComponentsForDate:mp.date];
+    NSString *dateText = [NSString stringWithFormat:@"%d.%d.%d",[components day], [components month], [components year]];
+    
+    if (cell.dateLabel.font != DATE_FONT) {
+        [cell.dateLabel setFont:DATE_FONT];
+    }
+    cell.dateLabel.text = dateText;
+    cell.hotKitchenLabel.text = [mp.hotKitchenWaterCount stringValue];
+    cell.coldKitchenLabel.text = [mp.coldKitchenWaterCount stringValue];
+    cell.hotBathLabel.text = [mp.hotBathWaterCount stringValue];
+    cell.coldBathLabel.text = [mp.coldBathWaterCount stringValue];
+    
+    if (cell.energyLabel.font != ENERGY_FONT) {
+        [cell.energyLabel setFont:ENERGY_FONT];
+    }
+    cell.energyLabel.text = [mp.energyCount stringValue];
+    
     return cell;
 }
 

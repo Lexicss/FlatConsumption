@@ -10,8 +10,13 @@
 
 static const NSString *kEntityName = @"MonthPayment";
 static NSArray *monthPayments;
+static NSCalendar *calendar;
 
 @implementation API
+
++ (void)initialize {
+    calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+}
 
 + (NSString *) entityName {
     return [kEntityName copy];
@@ -34,6 +39,15 @@ static NSArray *monthPayments;
     if (monthPayments != amonthPayments) {
         monthPayments = amonthPayments;
     }
+}
+
++ (NSDateComponents *)sharedComponentsForDate:(NSDate *)date {
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit |
+                                                         NSMonthCalendarUnit |
+                                                         NSDayCalendarUnit |
+                                                         NSWeekdayCalendarUnit
+                                                         ) fromDate:date];
+    return components;
 }
 
 @end

@@ -16,5 +16,6 @@
 
 + (NSArray *)monthPayments;
 + (void)setMonthPayments:(NSArray *)amonthPayments;
++ (NSDateComponents *)sharedComponentsForDate:(NSDate *)date;
 
 @end

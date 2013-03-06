@@ -11,6 +11,7 @@
 #import "MonthPayment.h"
 #import "API.h"
 #import "FCAddViewController.h"
+#import "FCCell.h"
 
 @interface FCMonthPaymentTableViewController : CoreDataTableViewController <AddMonthPaymentDelegate>
 

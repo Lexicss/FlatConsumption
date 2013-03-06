@@ -130,26 +130,85 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7Yx-kn-HOI" detailTextLabel="Dcp-0S-Si6" style="IBUITableViewCellStyleSubtitle" id="YSZ-nw-j1g" customClass="FCCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Month Cell" id="YSZ-nw-j1g" customClass="FCCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-kn-HOI">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYw-hz-WoL">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="gwQ-Nv-bcV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcp-0S-Si6">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcU-Uw-MYO">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="Z3O-lI-Fok"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MP-e1-t6f">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GF6-DE-ydN">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="57" id="qU5-ll-wd4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-hV-PwS">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="tUT-u6-YPZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-tn-HYf">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="P5Z-kQ-2Dv"/>
+                                                <constraint firstAttribute="height" constant="21" id="RgL-4f-WDa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="0.6709346064814814" green="0.52699617496300322" blue="0.24783244828797996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Wu0-tn-HYf" firstAttribute="leading" secondItem="gkH-hV-PwS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0Q3-qk-cY2"/>
+                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="37a-GX-pcJ"/>
+                                    <constraint firstItem="Wu0-tn-HYf" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="11" id="9M5-yb-l5Y"/>
+                                    <constraint firstItem="gkH-hV-PwS" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="20" type="default" id="AMU-QC-kCV"/>
+                                    <constraint firstItem="0MP-e1-t6f" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="leading" type="default" id="BfD-hg-yQT"/>
+                                    <constraint firstItem="gkH-hV-PwS" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="DT7-4q-zgf"/>
+                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="100" id="Egr-2M-fld"/>
+                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="I3L-Dd-Rwb"/>
+                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="leading" secondItem="0MP-e1-t6f" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XDc-qi-QXV"/>
+                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="bap-UM-27j"/>
+                                    <constraint firstItem="sYw-hz-WoL" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="8" id="keI-Y3-oI1"/>
+                                    <constraint firstItem="0MP-e1-t6f" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="20" type="default" id="pes-xR-Zi7"/>
+                                    <constraint firstItem="sYw-hz-WoL" firstAttribute="centerY" secondItem="YSZ-nw-j1g" secondAttribute="centerY" type="default" id="vRK-7A-IZg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="coldBathLabel" destination="gkH-hV-PwS" id="7zx-qi-8yD"/>
+                                    <outlet property="coldKitchenLabel" destination="0MP-e1-t6f" id="WPs-XH-dYp"/>
+                                    <outlet property="dateLabel" destination="sYw-hz-WoL" id="O8G-rA-9cT"/>
+                                    <outlet property="energyLabel" destination="Wu0-tn-HYf" id="Z0Y-qp-oET"/>
+                                    <outlet property="hotBathLabel" destination="GF6-DE-ydN" id="Jgp-Yz-dJ1"/>
+                                    <outlet property="hotKitchenLabel" destination="IcU-Uw-MYO" id="scn-yG-yZz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

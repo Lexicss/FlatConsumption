@@ -139,7 +139,7 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYw-hz-WoL">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="gwQ-Nv-bcV"/>
+                                                <constraint firstAttribute="height" constant="32" id="W9g-Ia-Ofg"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -176,30 +176,54 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu0-tn-HYf">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="P5Z-kQ-2Dv"/>
                                                 <constraint firstAttribute="height" constant="21" id="RgL-4f-WDa"/>
+                                                <constraint firstAttribute="width" constant="56" id="xjj-Zt-862"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" red="0.6709346064814814" green="0.52699617496300322" blue="0.24783244828797996" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="forkknife.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-gT-w2e">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="EFc-Sp-Xpm"/>
+                                                <constraint firstAttribute="height" constant="30" id="HiY-Lw-YfZ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="shower.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="eK6-Ow-fh2">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="uW2-Bf-yJ2"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="electricity.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="kaI-Mw-XIO">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="ERl-i3-v2A"/>
+                                                <constraint firstAttribute="width" constant="40" id="b3k-lJ-PyP"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Wu0-tn-HYf" firstAttribute="leading" secondItem="gkH-hV-PwS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0Q3-qk-cY2"/>
-                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="37a-GX-pcJ"/>
-                                    <constraint firstItem="Wu0-tn-HYf" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="11" id="9M5-yb-l5Y"/>
-                                    <constraint firstItem="gkH-hV-PwS" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="20" type="default" id="AMU-QC-kCV"/>
-                                    <constraint firstItem="0MP-e1-t6f" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="leading" type="default" id="BfD-hg-yQT"/>
-                                    <constraint firstItem="gkH-hV-PwS" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="DT7-4q-zgf"/>
-                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="100" id="Egr-2M-fld"/>
+                                    <constraint firstItem="vjY-gT-w2e" firstAttribute="top" secondItem="sYw-hz-WoL" secondAttribute="top" type="default" id="0Hn-em-1Iu"/>
+                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="14a-kJ-yyk"/>
+                                    <constraint firstItem="gkH-hV-PwS" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="20" type="default" id="4du-OP-iLI"/>
+                                    <constraint firstItem="0MP-e1-t6f" firstAttribute="leading" secondItem="IcU-Uw-MYO" secondAttribute="leading" type="default" id="57Y-SI-Bvl"/>
+                                    <constraint firstItem="eK6-Ow-fh2" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="154" id="A7L-pB-5Mk"/>
+                                    <constraint firstAttribute="trailing" secondItem="kaI-Mw-XIO" secondAttribute="trailing" constant="60" id="Goe-uf-XJ6"/>
                                     <constraint firstItem="GF6-DE-ydN" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="I3L-Dd-Rwb"/>
-                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="leading" secondItem="0MP-e1-t6f" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XDc-qi-QXV"/>
-                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="bap-UM-27j"/>
-                                    <constraint firstItem="sYw-hz-WoL" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="8" id="keI-Y3-oI1"/>
+                                    <constraint firstItem="eK6-Ow-fh2" firstAttribute="centerY" secondItem="Wu0-tn-HYf" secondAttribute="centerY" type="default" id="KyH-np-uj5"/>
+                                    <constraint firstItem="kaI-Mw-XIO" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" type="default" id="RcO-VB-huj"/>
+                                    <constraint firstItem="vjY-gT-w2e" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="84" id="V7r-xd-J0q"/>
+                                    <constraint firstAttribute="trailing" secondItem="GF6-DE-ydN" secondAttribute="trailing" constant="75" id="bEu-38-H8g"/>
+                                    <constraint firstItem="sYw-hz-WoL" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="7" id="dnv-Ki-f1V"/>
+                                    <constraint firstItem="IcU-Uw-MYO" firstAttribute="leading" secondItem="YSZ-nw-j1g" secondAttribute="leading" constant="117" id="elJ-eK-3Jc"/>
+                                    <constraint firstItem="eK6-Ow-fh2" firstAttribute="bottom" secondItem="vjY-gT-w2e" secondAttribute="bottom" type="default" id="gFq-gL-z1w"/>
+                                    <constraint firstItem="0MP-e1-t6f" firstAttribute="trailing" secondItem="IcU-Uw-MYO" secondAttribute="trailing" type="default" id="iJ6-nZ-YDK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wu0-tn-HYf" secondAttribute="trailing" constant="5" id="oUc-a3-IGs"/>
                                     <constraint firstItem="0MP-e1-t6f" firstAttribute="top" secondItem="YSZ-nw-j1g" secondAttribute="top" constant="20" type="default" id="pes-xR-Zi7"/>
+                                    <constraint firstItem="GF6-DE-ydN" firstAttribute="leading" secondItem="gkH-hV-PwS" secondAttribute="leading" type="default" id="qjv-7M-O5y"/>
                                     <constraint firstItem="sYw-hz-WoL" firstAttribute="centerY" secondItem="YSZ-nw-j1g" secondAttribute="centerY" type="default" id="vRK-7A-IZg"/>
+                                    <constraint firstItem="eK6-Ow-fh2" firstAttribute="top" secondItem="vjY-gT-w2e" secondAttribute="top" type="default" id="wAd-Gn-0Lq"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="coldBathLabel" destination="gkH-hV-PwS" id="7zx-qi-8yD"/>
@@ -459,6 +483,64 @@
             <point key="canvasLocation" x="-39" y="974"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="electricity.jpeg" width="45" height="37"/>
+        <image name="forkknife.jpeg" width="50" height="49"/>
+        <image name="shower.jpg" width="50" height="47"/>
+    </resources>
+    <classes>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="FCAddViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCAddViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="coldBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="coldKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyFromTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energySwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="energyTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyToTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastColdBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastColdKichenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastEnergyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastHotBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastHotKichenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="FCCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="coldBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coldKitchenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotKitchenLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FCMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCMainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="coldBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coldKitchenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotKitchenLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FCMonthPaymentTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCMonthPaymentTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

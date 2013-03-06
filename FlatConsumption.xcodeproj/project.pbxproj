@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C3A993216E789810054EA2D /* forkknife.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A993116E789810054EA2D /* forkknife.jpeg */; };
+		7C3A993516E789BB0054EA2D /* shower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A993416E789BB0054EA2D /* shower.jpg */; };
+		7C3A993716E78B860054EA2D /* electricity.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A993616E78B860054EA2D /* electricity.jpeg */; };
 		7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */; };
 		84DBFA7916E34A510048A93E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7816E34A510048A93E /* UIKit.framework */; };
 		84DBFA7B16E34A510048A93E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7A16E34A510048A93E /* Foundation.framework */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C3A993116E789810054EA2D /* forkknife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forkknife.jpeg; path = FlatConsumption/forkknife.jpeg; sourceTree = "<group>"; };
+		7C3A993416E789BB0054EA2D /* shower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shower.jpg; path = FlatConsumption/shower.jpg; sourceTree = "<group>"; };
+		7C3A993616E78B860054EA2D /* electricity.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = electricity.jpeg; path = FlatConsumption/electricity.jpeg; sourceTree = "<group>"; };
 		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCell.h; sourceTree = "<group>"; };
 		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCell.m; sourceTree = "<group>"; };
 		7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPayment.h; sourceTree = "<group>"; };
@@ -78,9 +84,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C3A993816E78B8B0054EA2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C3A993616E78B860054EA2D /* electricity.jpeg */,
+				7C3A993416E789BB0054EA2D /* shower.jpg */,
+				7C3A993116E789810054EA2D /* forkknife.jpeg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		84DBFA6916E34A500048A93E = {
 			isa = PBXGroup;
 			children = (
+				7C3A993816E78B8B0054EA2D /* Resources */,
 				84DBFAB416E362B60048A93E /* ManagedObjectes */,
 				84DBFAB316E362870048A93E /* Controllers */,
 				84DBFA8016E34A510048A93E /* FlatConsumption */,
@@ -221,6 +238,9 @@
 				84DBFA8F16E34A510048A93E /* Default@2x.png in Resources */,
 				84DBFA9116E34A510048A93E /* Default-568h@2x.png in Resources */,
 				84DBFA9416E34A510048A93E /* MainStoryboard.storyboard in Resources */,
+				7C3A993216E789810054EA2D /* forkknife.jpeg in Resources */,
+				7C3A993516E789BB0054EA2D /* shower.jpg in Resources */,
+				7C3A993716E78B860054EA2D /* electricity.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

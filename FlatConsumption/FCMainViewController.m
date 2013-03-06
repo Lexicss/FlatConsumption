@@ -28,13 +28,11 @@
     [super viewDidLoad];
 	NSLog(@"We have %d objects", [API monthPayments].count);
     NSArray *payments = [API monthPayments];
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateStyle:NSDateFormatterShortStyle];
     
-    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments withFormat:f];
-    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments withFormat:f];
-    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments withFormat:f];
-    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments withFormat:f];
+    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments];
+    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
+    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
+    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,19 +68,24 @@
     return curValue - prevValue;
 }
 
-- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array withFormat:(NSDateFormatter *)formatter{
+- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array {
     NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:array];
     NSString *resultText;
     if (index > 0) {
         MonthPayment *prev = array[index - 1];
         MonthPayment *cur = array[index];
         NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
-        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [formatter stringFromDate:prev.date], [formatter stringFromDate:cur.date], delta];
+        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
     } else {
         resultText = @"";
     }
     
     return resultText;
+}
+
+- (NSString *)stringFromDate:(NSDate *)date {
+    NSDateComponents *components = [API sharedComponentsForDate:date];
+    return [NSString stringWithFormat:@"%d.%d.%d", components.day, components.month, components.year];
 }
 
 @end

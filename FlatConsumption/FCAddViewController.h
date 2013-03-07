@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MonthPayment.h"
 #import "API.h"
+#import "UITextField+UIFieldAttr.h"
 
 @class FCAddViewController;
 @protocol AddMonthPaymentDelegate <NSObject>

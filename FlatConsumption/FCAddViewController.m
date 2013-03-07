@@ -139,7 +139,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
-    if ([self.fieldsSet containsObject:textField]) {
+    if ([self.fieldsSet containsObject:textField] && ![textField isEmpty]) {
         [self calcDeltaForField:textField];
     }
 }
@@ -214,10 +214,10 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 }
 
 - (BOOL)areAllFullFilled {
-    if ([self.dateTextField.text isEqualToString:@""])
+    if ([self.dateTextField isEmpty])
         return NO;
     for (UITextField *field in self.fieldsSet) {
-        if ([field.text isEqualToString:@""]) {
+        if ([field isEmpty]) {
             if (![self.energySwitch isOn] && ((field == self.energyFromTextField) || (field == self.energyToTextField))) {
                 continue;
             }
@@ -228,7 +228,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 }
 
 - (void)calcDeltaForField:(UITextField *)field {
-    if ([field.text isEqualToString:@""]) {
+    if ([field isEmpty]) {
         return;
     }
     NSString *initialText;

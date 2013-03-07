@@ -11,6 +11,7 @@
 		7C3A993516E789BB0054EA2D /* shower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A993416E789BB0054EA2D /* shower.jpg */; };
 		7C3A993716E78B860054EA2D /* electricity.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7C3A993616E78B860054EA2D /* electricity.jpeg */; };
 		7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */; };
+		7CAA46D716E8A33800F1E5EA /* UITextField+UIFieldAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */; };
 		84DBFA7916E34A510048A93E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7816E34A510048A93E /* UIKit.framework */; };
 		84DBFA7B16E34A510048A93E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7A16E34A510048A93E /* Foundation.framework */; };
 		84DBFA7D16E34A510048A93E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7C16E34A510048A93E /* CoreGraphics.framework */; };
@@ -39,6 +40,8 @@
 		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCell.m; sourceTree = "<group>"; };
 		7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPayment.h; sourceTree = "<group>"; };
 		7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPayment.m; sourceTree = "<group>"; };
+		7CAA46D516E8A33800F1E5EA /* UITextField+UIFieldAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+UIFieldAttr.h"; path = "FlatConsumption/UITextField+UIFieldAttr.h"; sourceTree = "<group>"; };
+		7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+UIFieldAttr.m"; path = "FlatConsumption/UITextField+UIFieldAttr.m"; sourceTree = "<group>"; };
 		84DBFA7416E34A500048A93E /* FlatConsumption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatConsumption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DBFA7816E34A510048A93E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84DBFA7A16E34A510048A93E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,9 +97,19 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		7CAA46D916E8A39400F1E5EA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7CAA46D516E8A33800F1E5EA /* UITextField+UIFieldAttr.h */,
+				7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		84DBFA6916E34A500048A93E = {
 			isa = PBXGroup;
 			children = (
+				7CAA46D916E8A39400F1E5EA /* Category */,
 				7C3A993816E78B8B0054EA2D /* Resources */,
 				84DBFAB416E362B60048A93E /* ManagedObjectes */,
 				84DBFAB316E362870048A93E /* Controllers */,
@@ -261,6 +274,7 @@
 				84DBFAB716E3631F0048A93E /* API.m in Sources */,
 				84DBFABA16E366980048A93E /* FCAddViewController.m in Sources */,
 				7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */,
+				7CAA46D716E8A33800F1E5EA /* UITextField+UIFieldAttr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,7 +48,7 @@
     [f setDateStyle:NSDateFormatterMediumStyle];
     
     NSDateComponents *components = [API sharedComponentsForDate:mp.date];
-    NSString *dateText = [NSString stringWithFormat:@"%d.%d.%d",[components day], [components month], [components year]];
+    NSString *dateText = [NSString stringWithFormat:@"%d.%@.%d",[components day], [API stringWithZeroOfInt:[components month]], [components year]];
     
     if (cell.dateLabel.font != DATE_FONT) {
         [cell.dateLabel setFont:DATE_FONT];

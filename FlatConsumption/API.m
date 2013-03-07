@@ -50,4 +50,12 @@ static NSCalendar *calendar;
     return components;
 }
 
++ (NSString *)stringWithZeroOfInt:(NSInteger)value {
+    if (value < 10) {
+        return [NSString stringWithFormat:@"0%d",value];
+    } else {
+        return [NSString stringWithFormat:@"%d", value];
+    }
+}
+
 @end

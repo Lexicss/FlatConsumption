@@ -11,6 +11,7 @@
 #define NUMBERS_ONLY @"1234567890"
 #define CHARACTER_LIMIT 6
 #define LAST @"last %@"
+#define NO_LAST_VALUE @"<No last value>"
 
 static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 
@@ -75,6 +76,9 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
         self.lastHotBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
         self.lastColdBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
         self.lastEnergyLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
+    } else {
+        self.lastHotKichenLabel.text = self.lastColdKichenLabel.text =
+        self.lastHotBathLabel.text = self.lastColdBathLabel.text = NO_LAST_VALUE;
     }
     self.scrollView.delegate = self;
 }

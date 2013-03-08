@@ -77,8 +77,8 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
         self.lastColdBathLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
         self.lastEnergyLabel.text = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
     } else {
-        self.lastHotKichenLabel.text = self.lastColdKichenLabel.text =
-        self.lastHotBathLabel.text = self.lastColdBathLabel.text = NO_LAST_VALUE;
+        self.lastDate.text = self.lastHotKichenLabel.text = self.lastColdKichenLabel.text =
+        self.lastHotBathLabel.text = self.lastColdBathLabel.text = self.lastEnergyLabel.text = NO_LAST_VALUE;
     }
     self.scrollView.delegate = self;
 }
@@ -89,6 +89,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     // Dispose of any resources that can be recreated.
 }
 
+/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     if ([self.dateTextField isFirstResponder] && [touch view] != self.dateTextField) {
@@ -106,7 +107,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     
     [super touchesBegan:touches withEvent:event];
 }
-
+*/
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.focusedField resignFirstResponder];
 }
@@ -213,7 +214,11 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     [self.dateTextField setText:initialText];
     [self setShoulSelectDate:NO];
     
-    initialText = [formatter stringFromDate:self.lastMonthPayment.date];
+    if (self.lastMonthPayment) {
+        initialText = [formatter stringFromDate:self.lastMonthPayment.date];
+    } else {
+        initialText = @"";
+    }
     [self.lastDate setText:[NSString stringWithFormat:@"%@ (%d days)",initialText,[components day]]];
 }
 
@@ -231,34 +236,57 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     return YES;
 }
 
+
+- (NSString *)textOfLastMPForKey:(NSString *)key {
+    if (self.lastMonthPayment) {
+        return [NSString stringWithFormat:LAST, [self.lastMonthPayment valueForKey:key]];
+    } else {
+        return @"";
+    }
+}
+
+- (NSInteger)integerOfLastMPForKey:(NSString *)key {
+    if (self.lastMonthPayment) {
+        return [[self.lastMonthPayment valueForKey:key] integerValue];
+    } else {
+        return 0;
+    }
+}
+
 - (void)calcDeltaForField:(UITextField *)field {
     if ([field isEmpty]) {
         return;
     }
     NSString *initialText;
+    NSString *key;
     if ([field isEqual:self.hotKitchenTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotKitchenWaterCount];
-        NSInteger last = [self.lastMonthPayment.hotKitchenWaterCount integerValue];
+        key = @"hotKitchenWaterCount";
+        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.hotKitchenWaterCount];
+        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.hotKitchenWaterCount integerValue];
         NSInteger current = [[self.hotKitchenTextField text] integerValue];
         self.lastHotKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.coldKitchenTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
-        NSInteger last = [self.lastMonthPayment.coldKitchenWaterCount integerValue];
+        key = @"coldKitchenWaterCount";
+        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
+        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.coldKitchenWaterCount integerValue];
         NSInteger current = [[self.coldKitchenTextField text] integerValue];
         self.lastColdKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.hotBathTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
-        NSInteger last = [self.lastMonthPayment.hotBathWaterCount integerValue];
+        key = @"hotBathWaterCount";
+        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
+        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.hotBathWaterCount integerValue];
         NSInteger current = [[self.hotBathTextField text] integerValue];
         self.lastHotBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.coldBathTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
-        NSInteger last = [self.lastMonthPayment.coldBathWaterCount integerValue];
+        key = @"coldBathWaterCount";
+        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
+        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.coldBathWaterCount integerValue];
         NSInteger current = [[self.coldBathTextField text] integerValue];
         self.lastColdBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.energyTextField]) {
-        initialText = [NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
-        NSInteger last = [self.lastMonthPayment.energyCount integerValue];
+        key = @"energyCount";
+        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
+        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.energyCount integerValue];
         NSInteger current = [[self.energyTextField text] integerValue];
         self.lastEnergyLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     }

@@ -27,22 +27,66 @@
 {
     [super viewDidLoad];
 	NSLog(@"We have %d objects", [API monthPayments].count);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
     NSArray *payments = [API monthPayments];
     
     self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments];
     self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
+    
+    [self calcAnnualForKey:@"coldKitchenWaterCount"];
+    [self calcAnnualForKey:@"hotBathWaterCount"];
+    [self calcAnnualForKey:@"coldBathWaterCount"];
+    
+    [self calcAnnualForKey:@"energyCount"];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)calcAnnualForKey:(NSString *)key {
+    MonthPayment *thePayment = [[API monthPayments] objectAtIndex:0];
+    NSInteger tempAmount = 0;
+    NSInteger startYear = [self yearAtIndex:0];
+    NSInteger startValue = [[thePayment valueForKey:key] integerValue];
+    NSInteger currentValue = startValue;
+    for (NSInteger i = 1; i < [[API monthPayments] count]; i++) {
+        NSInteger currentYear = [self yearAtIndex:i];
+
+        if ([key isEqualToString:@"energyCount"]) {
+            thePayment = [[API monthPayments] objectAtIndex:i];
+            if ([thePayment.energyCount boolValue]) {
+                tempAmount += [thePayment.energyCountOld integerValue] - startValue;
+                startValue = [thePayment.energyCountNew integerValue];
+            }
+        }
+        
+        if (currentYear > startYear) {
+            MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
+            currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
+            NSLog(@"For %d the amount %@ consists of = %d", startYear, key,currentValue);
+            startYear = currentYear;
+            startValue = [[thisPayment valueForKey:key] integerValue];
+            tempAmount = 0;
+        }
+    }
+}
+
+
+- (NSInteger)yearAtIndex:(NSInteger)index {
+    if (index < 0 || index > [[API monthPayments] count] - 1)
+        return -1;
+    MonthPayment *mp = [[API monthPayments] objectAtIndex:index];
+    NSDateComponents *components = [API sharedComponentsForDate:mp.date];
+    return [components year];
 }
 
 - (NSInteger)indexOfMaxConsumptionForKey:(NSString *)key withArray:(NSArray *)array {

@@ -12,8 +12,9 @@
 #import "API.h"
 #import "FCAddViewController.h"
 #import "FCCell.h"
+#import "FCEditViewController.h"
 
-@interface FCMonthPaymentTableViewController : CoreDataTableViewController <AddMonthPaymentDelegate>
+@interface FCMonthPaymentTableViewController : CoreDataTableViewController <AddMonthPaymentDelegate, EditMonthPaymentDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

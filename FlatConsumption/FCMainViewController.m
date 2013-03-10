@@ -8,6 +8,8 @@
 
 #import "FCMainViewController.h"
 
+static const BOOL kIncludeCurrentYear = YES;
+
 @interface FCMainViewController ()
 
 @end
@@ -38,6 +40,7 @@
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
     
+    [self calcAnnualForKey:@"hotKitchenWaterCount"];
     [self calcAnnualForKey:@"coldKitchenWaterCount"];
     [self calcAnnualForKey:@"hotBathWaterCount"];
     [self calcAnnualForKey:@"coldBathWaterCount"];
@@ -51,6 +54,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void)calcAnnualForKey:(NSString *)key {
     MonthPayment *thePayment = [[API monthPayments] objectAtIndex:0];
@@ -69,15 +73,17 @@
             }
         }
         
-        if (currentYear > startYear) {
+        BOOL includeCurrentYear = kIncludeCurrentYear && i == [API monthPayments].count - 1;
+        if (currentYear > startYear || includeCurrentYear) {
             MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
-            NSLog(@"For %d the amount %@ consists of = %d", startYear, key,currentValue);
+            NSLog(@"For %d the amount %@ consists of = %d%@", startYear, key,currentValue,includeCurrentYear?@"(not completed)":@"");
             startYear = currentYear;
             startValue = [[thisPayment valueForKey:key] integerValue];
             tempAmount = 0;
         }
     }
+    NSLog(@"--------");
 }
 
 

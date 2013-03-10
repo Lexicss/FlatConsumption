@@ -87,6 +87,13 @@
         } else {
             addVC.lastMonthPayment = nil;
         }
+    } else if ([segue.identifier isEqualToString:@"Edit Payment Segue"]) {
+        FCEditViewController *editVC = segue.destinationViewController;
+        editVC.delegate = self;
+        editVC.managedObjectContext = self.managedObjectContext;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        MonthPayment *selectedPayment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        editVC.monthPayment = selectedPayment;
     }
 }
 
@@ -94,6 +101,11 @@
 
 - (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller {
     NSLog(@"objects are: %d", [self.fetchedResultsController.fetchedObjects count]);
+    [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
+    [controller.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)theSaveButtonOnEditWasTapped:(FCEditViewController *)controller {
     [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
     [controller.navigationController popViewControllerAnimated:YES];
 }

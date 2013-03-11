@@ -43,13 +43,14 @@
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
     
+    NSArray *hotKitchenArray = [self calcAnnualForKey:@"hotKitchenWaterCount"];
     NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];
     NSArray *hotBathArray = [self calcAnnualForKey:@"hotBathWaterCount"];
     NSArray *coldBathArray = [self calcAnnualForKey:@"coldBathWaterCount"];
     
     NSArray *energyArray = [self calcAnnualForKey:@"energyCount"];
     
-    self.fullArray = [NSArray arrayWithObjects:coldKitchenArray, hotBathArray, coldBathArray, energyArray,nil];
+    self.fullArray = [NSArray arrayWithObjects:hotKitchenArray, coldKitchenArray, hotBathArray, coldBathArray, energyArray,nil];
 }
 
 - (void)didReceiveMemoryWarning

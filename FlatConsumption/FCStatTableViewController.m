@@ -75,7 +75,18 @@
     }
     
     NSArray *currentArray = [statArray_ objectAtIndex:indexPath.section];
-    NSString *yearString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue];
+    NSString *yearString;
+    if ([self maxIndexInArray:currentArray] == indexPath.row) {
+        yearString = [NSString stringWithFormat:@"%@ - max",[((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+        cell.textLabel.textColor = [UIColor redColor];
+    } else if ([self minIndexInArray:currentArray] == indexPath.row) {
+        yearString = [NSString stringWithFormat:@"%@ - min",[((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+        cell.textLabel.textColor = [UIColor greenColor];
+    } else {
+        yearString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue];
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    
     NSString *valueString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).valueNumber stringValue];
                              
     cell.textLabel.text = yearString;
@@ -134,6 +145,32 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (NSInteger)minIndexInArray:(NSArray *)statArray {
+    NSInteger minValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
+    NSInteger minIndex = 0;
+    for (NSInteger i = 1; i < [statArray count]; i++) {
+        NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        if (value < minValue) {
+            minValue = value;
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+
+- (NSInteger)maxIndexInArray:(NSArray *)statArray {
+    NSInteger maxValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
+    NSInteger maxIndex = 0;
+    for (NSInteger i = 1; i < [statArray count]; i++) {
+        NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        if (value > maxValue) {
+            maxValue = value;
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
 }
 
 @end

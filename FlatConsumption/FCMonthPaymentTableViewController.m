@@ -11,6 +11,8 @@
 #define DATE_FONT [UIFont fontWithName:@"Baskerville-BoldItalic" size:17]
 #define ENERGY_FONT [UIFont fontWithName:@"MarkerFelt-Thin" size:22]
 
+static BOOL IsAscending = YES;
+
 @implementation FCMonthPaymentTableViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -19,7 +21,9 @@
 - (void)setupFetchedResultsController {
     NSString *entityName = [API entityName];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date"
+                                                                                     ascending:IsAscending
+                                                                                      selector:@selector(localizedCaseInsensitiveCompare:)]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     [self performFetch];
     [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
@@ -33,11 +37,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Month Cell";
     
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     FCCell *cell = (FCCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell = [[FCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.dateLabel.font = [UIFont fontWithName:@"Baskerville-BoldItalic" size:17];
     }
@@ -83,7 +85,12 @@
         
         NSArray *recodrs = [self.fetchedResultsController fetchedObjects];
         if ([recodrs count] > 0) {
-            addVC.lastMonthPayment = [recodrs lastObject];
+            if (IsAscending) {
+                addVC.lastMonthPayment = [recodrs lastObject];
+            } else {
+                addVC.lastMonthPayment = recodrs[0];
+            }
+            
         } else {
             addVC.lastMonthPayment = nil;
         }

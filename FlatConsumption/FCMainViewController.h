@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "API.h"
 #import "MonthPayment.h"
+#import "FCStatTableViewController.h"
 
 @interface FCMainViewController : UIViewController
 
@@ -16,4 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *coldKitchenLabel;
 @property (strong, nonatomic) IBOutlet UILabel *hotBathLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coldBathLabel;
+@property (strong, nonatomic) IBOutlet UIButton *listButton;
+- (IBAction)listButtonClicked:(id)sender;
 @end

@@ -80,7 +80,7 @@
             MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
             NSLog(@"For %d the amount %@ consists of = %d", startYear, key,currentValue);
-            FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:startValue withKey:key];
+            FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:currentValue withKey:key];
             [yearArray addObject:stat];
             
             startYear = currentYear;

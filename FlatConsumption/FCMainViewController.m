@@ -7,8 +7,10 @@
 //
 
 #import "FCMainViewController.h"
+#import "FCStat.h"
 
 @interface FCMainViewController ()
+@property(strong, nonatomic) NSMutableArray *fullArray;
 
 @end
 
@@ -26,7 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.fullArray = [[NSMutableArray alloc] init];
 	NSLog(@"We have %d objects", [API monthPayments].count);
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,12 +43,13 @@
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
     
-    [self calcAnnualForKey:@"coldKitchenWaterCount"];
-    [self calcAnnualForKey:@"hotBathWaterCount"];
-    [self calcAnnualForKey:@"coldBathWaterCount"];
+    NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];
+    NSArray *hotBathArray = [self calcAnnualForKey:@"hotBathWaterCount"];
+    NSArray *coldBathArray = [self calcAnnualForKey:@"coldBathWaterCount"];
     
-    [self calcAnnualForKey:@"energyCount"];
+    NSArray *energyArray = [self calcAnnualForKey:@"energyCount"];
     
+    self.fullArray = [NSArray arrayWithObjects:coldKitchenArray, hotBathArray, coldBathArray, energyArray,nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,12 +58,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)calcAnnualForKey:(NSString *)key {
+- (NSArray *)calcAnnualForKey:(NSString *)key {
     MonthPayment *thePayment = [[API monthPayments] objectAtIndex:0];
     NSInteger tempAmount = 0;
     NSInteger startYear = [self yearAtIndex:0];
     NSInteger startValue = [[thePayment valueForKey:key] integerValue];
     NSInteger currentValue = startValue;
+    NSMutableArray *yearArray = [[NSMutableArray alloc] init];
     for (NSInteger i = 1; i < [[API monthPayments] count]; i++) {
         NSInteger currentYear = [self yearAtIndex:i];
 
@@ -73,11 +80,17 @@
             MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
             NSLog(@"For %d the amount %@ consists of = %d", startYear, key,currentValue);
+            FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:startValue withKey:key];
+            [yearArray addObject:stat];
+            
             startYear = currentYear;
             startValue = [[thisPayment valueForKey:key] integerValue];
             tempAmount = 0;
+            
+            
         }
     }
+    return yearArray;
 }
 
 
@@ -132,4 +145,17 @@
     return [NSString stringWithFormat:@"%d.%d.%d", components.day, components.month, components.year];
 }
 
+- (IBAction)listButtonClicked:(id)sender {
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Stat Segue"]) {
+        FCStatTableViewController *statTVC = segue.destinationViewController;
+        [statTVC setStatArray:self.fullArray];
+        
+    }
+}
+
 @end
+
+

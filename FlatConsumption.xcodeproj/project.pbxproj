@@ -13,6 +13,8 @@
 		7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */; };
 		7CAA46D716E8A33800F1E5EA /* UITextField+UIFieldAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */; };
 		8490FAB316EC9C2000ED1E68 /* FCEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8490FAB216EC9C2000ED1E68 /* FCEditViewController.m */; };
+		84CD694C16EE479E0013FC49 /* FCStatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */; };
+		84CD694D16EE47A70013FC49 /* FCStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD694B16EE470B0013FC49 /* FCStat.m */; };
 		84DBFA7916E34A510048A93E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7816E34A510048A93E /* UIKit.framework */; };
 		84DBFA7B16E34A510048A93E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7A16E34A510048A93E /* Foundation.framework */; };
 		84DBFA7D16E34A510048A93E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7C16E34A510048A93E /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 		7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+UIFieldAttr.m"; path = "FlatConsumption/UITextField+UIFieldAttr.m"; sourceTree = "<group>"; };
 		8490FAB116EC9C2000ED1E68 /* FCEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCEditViewController.h; path = FlatConsumption/FCEditViewController.h; sourceTree = "<group>"; };
 		8490FAB216EC9C2000ED1E68 /* FCEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCEditViewController.m; path = FlatConsumption/FCEditViewController.m; sourceTree = "<group>"; };
+		84CD694716EE46FC0013FC49 /* FCStatTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FCStatTableViewController.h; path = FlatConsumption/FCStatTableViewController.h; sourceTree = "<group>"; };
+		84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FCStatTableViewController.m; path = FlatConsumption/FCStatTableViewController.m; sourceTree = "<group>"; };
+		84CD694A16EE470B0013FC49 /* FCStat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCStat.h; sourceTree = "<group>"; };
+		84CD694B16EE470B0013FC49 /* FCStat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCStat.m; sourceTree = "<group>"; };
 		84DBFA7416E34A500048A93E /* FlatConsumption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatConsumption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DBFA7816E34A510048A93E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84DBFA7A16E34A510048A93E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +150,8 @@
 		84DBFA8016E34A510048A93E /* FlatConsumption */ = {
 			isa = PBXGroup;
 			children = (
+				84CD694A16EE470B0013FC49 /* FCStat.h */,
+				84CD694B16EE470B0013FC49 /* FCStat.m */,
 				84DBFAA716E34F4F0048A93E /* CoreDataTableViewController.h */,
 				84DBFAA816E34F4F0048A93E /* CoreDataTableViewController.m */,
 				84DBFA8916E34A510048A93E /* FCAppDelegate.h */,
@@ -178,6 +186,8 @@
 		84DBFAB316E362870048A93E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84CD694716EE46FC0013FC49 /* FCStatTableViewController.h */,
+				84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */,
 				84DBFAAC16E3523A0048A93E /* FCMonthPaymentTableViewController.h */,
 				84DBFAAD16E3523A0048A93E /* FCMonthPaymentTableViewController.m */,
 				84DBFAA916E34FA90048A93E /* FCMainViewController.h */,
@@ -269,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CD694D16EE47A70013FC49 /* FCStat.m in Sources */,
+				84CD694C16EE479E0013FC49 /* FCStatTableViewController.m in Sources */,
 				84DBFAB216E354300048A93E /* CoreDataTableViewController.m in Sources */,
 				84DBFA8716E34A510048A93E /* main.m in Sources */,
 				84DBFA8B16E34A510048A93E /* FCAppDelegate.m in Sources */,

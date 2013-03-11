@@ -700,6 +700,21 @@
                 <relationship kind="outlet" name="hotKitchenLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="FCEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="coldBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="coldKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyFromTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energySwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="energyTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyToTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotKitchenTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="FCMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FCMainViewController.h"/>
             <relationships>

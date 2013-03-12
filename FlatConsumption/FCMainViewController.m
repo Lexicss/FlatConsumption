@@ -60,26 +60,33 @@ static const BOOL kIncludeCurrentYear = YES;
 
 
 - (NSArray *)calcAnnualForKey:(NSString *)key {
-    MonthPayment *thePayment = [[API monthPayments] objectAtIndex:0];
+    NSArray *workArray;
+    if (IsAscending) {
+        workArray = [API monthPayments];
+    } else {
+        workArray = [[API monthPayments] reverseArray];
+    }
+    
+    MonthPayment *thePayment = [workArray objectAtIndex:0];
     NSInteger tempAmount = 0;
-    NSInteger startYear = [self yearAtIndex:0];
+    NSInteger startYear = [self yearAtIndex:0 inArray:workArray];
     NSInteger startValue = [[thePayment valueForKey:key] integerValue];
     NSInteger currentValue = startValue;
     NSMutableArray *yearArray = [[NSMutableArray alloc] init];
-    for (NSInteger i = 1; i < [[API monthPayments] count]; i++) {
-        NSInteger currentYear = [self yearAtIndex:i];
+    for (NSInteger i = 1; i < [workArray count]; i++) {
+        NSInteger currentYear = [self yearAtIndex:i inArray:workArray];
 
         if ([key isEqualToString:@"energyCount"]) {
-            thePayment = [[API monthPayments] objectAtIndex:i];
+            thePayment = [workArray objectAtIndex:i];
             if ([thePayment.energyCount boolValue]) {
                 tempAmount += [thePayment.energyCountOld integerValue] - startValue;
                 startValue = [thePayment.energyCountNew integerValue];
             }
         }
 
-        BOOL includeCurrentYear = kIncludeCurrentYear && i == [API monthPayments].count - 1;
+        BOOL includeCurrentYear = kIncludeCurrentYear && i == workArray.count - 1;
         if (currentYear > startYear || includeCurrentYear) {
-            MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
+            MonthPayment *thisPayment = [workArray objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
             NSLog(@"For %d the amount %@ consists of = %d%@", startYear, key,currentValue,includeCurrentYear?@"(not completed)":@"");
             FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:currentValue withKey:key];
@@ -94,10 +101,10 @@ static const BOOL kIncludeCurrentYear = YES;
 }
 
 
-- (NSInteger)yearAtIndex:(NSInteger)index {
-    if (index < 0 || index > [[API monthPayments] count] - 1)
+- (NSInteger)yearAtIndex:(NSInteger)index inArray:(NSArray *)array {
+    if (index < 0 || index > [array count] - 1)
         return -1;
-    MonthPayment *mp = [[API monthPayments] objectAtIndex:index];
+    MonthPayment *mp = [array objectAtIndex:index];
     NSDateComponents *components = [API sharedComponentsForDate:mp.date];
     return [components year];
 }
@@ -118,8 +125,17 @@ static const BOOL kIncludeCurrentYear = YES;
 }
 
 - (NSInteger)deltaForKey:(NSString *)key withIndex:(NSInteger)index inArray:(NSArray *)array {
-    MonthPayment *previousPayment = array[index-1];
-    MonthPayment *currentPayment = array[index];
+    MonthPayment *previousPayment; //= array[index-1];
+    MonthPayment *currentPayment; //= array[index];
+    
+    if (IsAscending) {
+        previousPayment = array[index - 1];
+        currentPayment = array[index];
+    } else {
+        previousPayment = array[index];
+        currentPayment = array[index - 1];
+    }
+    
     NSInteger curValue = [[currentPayment valueForKey:key] integerValue];
     NSInteger prevValue = [[previousPayment valueForKey:key] integerValue];
     return curValue - prevValue;
@@ -129,8 +145,16 @@ static const BOOL kIncludeCurrentYear = YES;
     NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:array];
     NSString *resultText;
     if (index > 0) {
-        MonthPayment *prev = array[index - 1];
-        MonthPayment *cur = array[index];
+        MonthPayment *prev; //= array[index - 1];
+        MonthPayment *cur; //= array[index];
+        if (IsAscending) {
+            prev = array[index - 1];
+            cur = array[index];
+        } else {
+            prev = array[index];
+            cur = array[index - 1];
+        }
+        
         NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
         resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
     } else {

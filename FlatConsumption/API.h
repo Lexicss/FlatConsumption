@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+static BOOL IsAscending = NO;
 
 @interface API : NSObject
 

@@ -11,7 +11,6 @@
 #define DATE_FONT [UIFont fontWithName:@"Baskerville-BoldItalic" size:17]
 #define ENERGY_FONT [UIFont fontWithName:@"MarkerFelt-Thin" size:22]
 
-static BOOL IsAscending = YES;
 
 @implementation FCMonthPaymentTableViewController
 @synthesize fetchedResultsController = _fetchedResultsController;

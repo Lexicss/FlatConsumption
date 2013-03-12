@@ -8,10 +8,16 @@
 
 #import "FCMainViewController.h"
 
-static const BOOL kIncludeCurrentYear = YES;
+static const BOOL kIncludeCurrentYear = NO;
 
 @interface FCMainViewController ()
 @property(strong, nonatomic) NSArray *fullArray;
+
+@property(strong, nonatomic) NSArray *hotKitchenIndexes;
+@property(strong, nonatomic) NSArray *coldKitchenIndexes;
+@property(strong, nonatomic) NSArray *hotBathIndexes;
+@property(strong, nonatomic) NSArray *coldBathIndexes;
+@property(strong, nonatomic) NSArray *energyIndexes;
 
 @end
 
@@ -36,11 +42,17 @@ static const BOOL kIncludeCurrentYear = YES;
     NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
     NSArray *payments = [API monthPayments];
     
-    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments];
-    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
-    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
-    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
-    self.energyLabel.text = [self textForKey:@"energyCount" withArray:payments];
+//    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments];
+//    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
+//    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
+//    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
+//    self.energyLabel.text = [self textForKey:@"energyCount" withArray:payments];
+    
+    self.hotKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"hotKitchenWaterCount" withArray:payments];
+    self.coldKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"coldKitchenWaterCount" withArray:payments];
+    self.hotBathIndexes = [self indexesOfMaxConsumptionForKey:@"hotBathWaterCount" withArray:payments];
+    self.coldBathIndexes = [self indexesOfMaxConsumptionForKey:@"coldBathWaterCount" withArray:payments];
+    self.energyIndexes = [self indexesOfMaxConsumptionForKey:@"energyCount" withArray:payments];
     
     NSArray *hotKitchenArray = [self calcAnnualForKey:@"hotKitchenWaterCount"];
     NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];
@@ -51,6 +63,12 @@ static const BOOL kIncludeCurrentYear = YES;
     
     NSArray *allArray = @[hotKitchenArray, coldKitchenArray, hotBathArray, coldBathArray, energyArray];
     [self setFullArray:allArray];
+    
+    [self.tableView setDataSource:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.tableView setDataSource:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +77,70 @@ static const BOOL kIncludeCurrentYear = YES;
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString *)keyOfIndexesNum:(NSInteger)num {
+    switch (num) {
+        case 0:
+            return @"hotKitchenIndexes";
+        case 1:
+            return @"coldKitchenIndexes";
+        case 2:
+            return @"hotBathIndexes";
+        case 3:
+            return @"coldBathIndexes";
+        case 4:
+            return @"energyIndexes";
+            
+        default:
+            return @"";
+    }
+}
+
+- (NSString *)keyOfWaterCountNum:(NSInteger)num {
+    switch (num) {
+        case 0:
+            return @"hotKitchenWaterCount";
+        case 1:
+            return @"coldKitchenWaterCount";
+        case 2:
+            return @"hotBathWaterCount";
+        case 3:
+            return @"coldBathWaterCount";
+        case 4:
+            return @"energyCount";
+            
+        default:
+            return @"";
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 5;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self keyOfIndexesNum:section];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSString *key = [self keyOfIndexesNum:section];
+    return [[self valueForKey:key] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Hot Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    NSString *waterCountKey = [self keyOfWaterCountNum:indexPath.section];
+    NSString *indexKey = [self keyOfIndexesNum:indexPath.section];
+    NSArray *indexArray = [self valueForKey:indexKey];
+    NSInteger index = [((NSNumber *)indexArray[indexPath.row]) integerValue];
+    NSString *dateText = [self textForKey:waterCountKey withArray:[API monthPayments] andIndex:index];
+    cell.textLabel.text = dateText;
+    
+    return cell;
+}
 
 - (NSArray *)calcAnnualForKey:(NSString *)key {
     NSArray *workArray;
@@ -110,19 +192,25 @@ static const BOOL kIncludeCurrentYear = YES;
     return [components year];
 }
 
-- (NSInteger)indexOfMaxConsumptionForKey:(NSString *)key withArray:(NSArray *)array {
-    
-    //find the maximum hot Kitchen
+- (NSArray *)indexesOfMaxConsumptionForKey:(NSString *)key withArray:(NSArray *)array {
     NSInteger maxHotDelta = 0;
-    NSInteger index = 0;
+    //NSInteger index = 0;
+    NSMutableArray *maxIndexesArray = [[NSMutableArray alloc] init];
+    
     for (NSInteger i = 1; i < [array count]; i++) {
         NSInteger delta = [self deltaForKey:key withIndex:i inArray:array];
-        if (delta > maxHotDelta) {
-            index = i;
+        if (delta == maxHotDelta) {
+            //index = i;
+            [maxIndexesArray addObject:[NSNumber numberWithInt:i]];
+        } else if (delta > maxHotDelta) {
+            //index = i;
+            [maxIndexesArray removeAllObjects];
+            [maxIndexesArray addObject:[NSNumber numberWithInt:i]];
             maxHotDelta = delta;
         }
     }
-    return index;
+    
+    return maxIndexesArray;
 }
 
 - (NSInteger)deltaForKey:(NSString *)key withIndex:(NSInteger)index inArray:(NSArray *)array {
@@ -142,22 +230,45 @@ static const BOOL kIncludeCurrentYear = YES;
     return curValue - prevValue;
 }
 
-- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array {
-    NSInteger index = [self indexOfMaxConsumptionForKey:key withArray:array];
+//- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array {
+//    NSInteger index = [self indexesOfMaxConsumptionForKey:key withArray:array];
+//   // NSArray *indexes = [self indexesOfMaxConsumptionForKey:key withArray:array];
+//    NSString *resultText;
+//    if (index > 0) {
+//        MonthPayment *prev; //= array[index - 1];
+//        MonthPayment *cur; //= array[index];
+//        if (IsAscending) {
+//            prev = array[index - 1];
+//            cur = array[index];
+//        } else {
+//            prev = array[index];
+//            cur = array[index - 1];
+//        }
+//        
+//        NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
+//        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
+//    } else {
+//        resultText = @"";
+//    }
+//    
+//    return resultText;
+//}
+
+- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array andIndex:(NSInteger)selectedIndex {
     NSString *resultText;
     if (index > 0) {
         MonthPayment *prev; //= array[index - 1];
         MonthPayment *cur; //= array[index];
         if (IsAscending) {
-            prev = array[index - 1];
-            cur = array[index];
+            prev = array[selectedIndex - 1];
+            cur = array[selectedIndex];
         } else {
-            prev = array[index];
-            cur = array[index - 1];
+            prev = array[selectedIndex];
+            cur = array[selectedIndex - 1];
         }
         
-        NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
-        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
+        NSInteger delta = [self deltaForKey:key withIndex:selectedIndex inArray:array];
+        resultText = [NSString stringWithFormat:@"%@ to %@-%d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
     } else {
         resultText = @"";
     }

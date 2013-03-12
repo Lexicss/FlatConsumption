@@ -40,8 +40,8 @@
 		7C3A993116E789810054EA2D /* forkknife.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = forkknife.jpeg; path = FlatConsumption/forkknife.jpeg; sourceTree = "<group>"; };
 		7C3A993416E789BB0054EA2D /* shower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shower.jpg; path = FlatConsumption/shower.jpg; sourceTree = "<group>"; };
 		7C3A993616E78B860054EA2D /* electricity.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = electricity.jpeg; path = FlatConsumption/electricity.jpeg; sourceTree = "<group>"; };
-		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCell.h; sourceTree = "<group>"; };
-		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCell.m; sourceTree = "<group>"; };
+		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCCell.h; path = FlatConsumption/FCCell.h; sourceTree = "<group>"; };
+		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCCell.m; path = FlatConsumption/FCCell.m; sourceTree = "<group>"; };
 		7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPayment.h; sourceTree = "<group>"; };
 		7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPayment.m; sourceTree = "<group>"; };
 		7CAA46D516E8A33800F1E5EA /* UITextField+UIFieldAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+UIFieldAttr.h"; path = "FlatConsumption/UITextField+UIFieldAttr.h"; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 		8490FAB216EC9C2000ED1E68 /* FCEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCEditViewController.m; path = FlatConsumption/FCEditViewController.m; sourceTree = "<group>"; };
 		84CD694716EE46FC0013FC49 /* FCStatTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FCStatTableViewController.h; path = FlatConsumption/FCStatTableViewController.h; sourceTree = "<group>"; };
 		84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FCStatTableViewController.m; path = FlatConsumption/FCStatTableViewController.m; sourceTree = "<group>"; };
-		84CD694A16EE470B0013FC49 /* FCStat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCStat.h; sourceTree = "<group>"; };
-		84CD694B16EE470B0013FC49 /* FCStat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCStat.m; sourceTree = "<group>"; };
+		84CD694A16EE470B0013FC49 /* FCStat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FCStat.h; path = FlatConsumption/FCStat.h; sourceTree = "<group>"; };
+		84CD694B16EE470B0013FC49 /* FCStat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FCStat.m; path = FlatConsumption/FCStat.m; sourceTree = "<group>"; };
 		84DBFA7416E34A500048A93E /* FlatConsumption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlatConsumption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DBFA7816E34A510048A93E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84DBFA7A16E34A510048A93E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -120,9 +120,21 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		8496257C16EF9C78003CCACA /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				84CD694A16EE470B0013FC49 /* FCStat.h */,
+				84CD694B16EE470B0013FC49 /* FCStat.m */,
+				7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */,
+				7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		84DBFA6916E34A500048A93E = {
 			isa = PBXGroup;
 			children = (
+				8496257C16EF9C78003CCACA /* Objects */,
 				7CAA46D916E8A39400F1E5EA /* Category */,
 				7C3A993816E78B8B0054EA2D /* Resources */,
 				84DBFAB416E362B60048A93E /* ManagedObjectes */,
@@ -155,8 +167,6 @@
 		84DBFA8016E34A510048A93E /* FlatConsumption */ = {
 			isa = PBXGroup;
 			children = (
-				84CD694A16EE470B0013FC49 /* FCStat.h */,
-				84CD694B16EE470B0013FC49 /* FCStat.m */,
 				84DBFA8916E34A510048A93E /* FCAppDelegate.h */,
 				84DBFA8A16E34A510048A93E /* FCAppDelegate.m */,
 				84DBFA9216E34A510048A93E /* MainStoryboard.storyboard */,
@@ -166,8 +176,6 @@
 				84DBFA8116E34A510048A93E /* Supporting Files */,
 				84DBFAB516E3631F0048A93E /* API.h */,
 				84DBFAB616E3631F0048A93E /* API.m */,
-				7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */,
-				7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */,
 			);
 			path = FlatConsumption;
 			sourceTree = "<group>";

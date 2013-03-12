@@ -19,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *hotBathLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coldBathLabel;
 @property (strong, nonatomic) IBOutlet UIButton *listButton;
+@property (strong, nonatomic) IBOutlet UILabel *energyLabel;
 - (IBAction)listButtonClicked:(id)sender;
 @end

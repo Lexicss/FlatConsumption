@@ -40,6 +40,7 @@ static const BOOL kIncludeCurrentYear = YES;
     self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
+    self.energyLabel.text = [self textForKey:@"energyCount" withArray:payments];
     
     NSArray *hotKitchenArray = [self calcAnnualForKey:@"hotKitchenWaterCount"];
     NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];

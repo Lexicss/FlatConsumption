@@ -67,8 +67,8 @@
 		84DBFA9016E34A510048A93E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		84DBFA9316E34A510048A93E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		84DBFA9616E34A510048A93E /* FlatConsumption.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlatConsumption.xcdatamodel; sourceTree = "<group>"; };
-		84DBFAA716E34F4F0048A93E /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
-		84DBFAA816E34F4F0048A93E /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		84DBFAA716E34F4F0048A93E /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = FlatConsumption/CoreDataTableViewController.h; sourceTree = "<group>"; };
+		84DBFAA816E34F4F0048A93E /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = FlatConsumption/CoreDataTableViewController.m; sourceTree = "<group>"; };
 		84DBFAA916E34FA90048A93E /* FCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCMainViewController.h; path = FlatConsumption/FCMainViewController.h; sourceTree = "<group>"; };
 		84DBFAAA16E34FA90048A93E /* FCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCMainViewController.m; path = FlatConsumption/FCMainViewController.m; sourceTree = "<group>"; };
 		84DBFAAC16E3523A0048A93E /* FCMonthPaymentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCMonthPaymentTableViewController.h; path = FlatConsumption/FCMonthPaymentTableViewController.h; sourceTree = "<group>"; };
@@ -152,8 +152,6 @@
 			children = (
 				84CD694A16EE470B0013FC49 /* FCStat.h */,
 				84CD694B16EE470B0013FC49 /* FCStat.m */,
-				84DBFAA716E34F4F0048A93E /* CoreDataTableViewController.h */,
-				84DBFAA816E34F4F0048A93E /* CoreDataTableViewController.m */,
 				84DBFA8916E34A510048A93E /* FCAppDelegate.h */,
 				84DBFA8A16E34A510048A93E /* FCAppDelegate.m */,
 				84DBFA9216E34A510048A93E /* MainStoryboard.storyboard */,
@@ -186,6 +184,8 @@
 		84DBFAB316E362870048A93E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84DBFAA716E34F4F0048A93E /* CoreDataTableViewController.h */,
+				84DBFAA816E34F4F0048A93E /* CoreDataTableViewController.m */,
 				84CD694716EE46FC0013FC49 /* FCStatTableViewController.h */,
 				84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */,
 				84DBFAAC16E3523A0048A93E /* FCMonthPaymentTableViewController.h */,

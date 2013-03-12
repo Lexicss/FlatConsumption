@@ -11,6 +11,7 @@
 static const BOOL kIncludeCurrentYear = YES;
 
 @interface FCMainViewController ()
+@property(strong, nonatomic) NSArray *fullArray;
 
 @end
 
@@ -40,13 +41,15 @@ static const BOOL kIncludeCurrentYear = YES;
     self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
     self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
     
-    [self calcAnnualForKey:@"hotKitchenWaterCount"];
-    [self calcAnnualForKey:@"coldKitchenWaterCount"];
-    [self calcAnnualForKey:@"hotBathWaterCount"];
-    [self calcAnnualForKey:@"coldBathWaterCount"];
+    NSArray *hotKitchenArray = [self calcAnnualForKey:@"hotKitchenWaterCount"];
+    NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];
+    NSArray *hotBathArray = [self calcAnnualForKey:@"hotBathWaterCount"];
+    NSArray *coldBathArray = [self calcAnnualForKey:@"coldBathWaterCount"];
     
-    [self calcAnnualForKey:@"energyCount"];
+    NSArray *energyArray = [self calcAnnualForKey:@"energyCount"];
     
+    NSArray *allArray = @[hotKitchenArray, coldKitchenArray, hotBathArray, coldBathArray, energyArray];
+    [self setFullArray:allArray];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,12 +59,13 @@ static const BOOL kIncludeCurrentYear = YES;
 }
 
 
-- (void)calcAnnualForKey:(NSString *)key {
+- (NSArray *)calcAnnualForKey:(NSString *)key {
     MonthPayment *thePayment = [[API monthPayments] objectAtIndex:0];
     NSInteger tempAmount = 0;
     NSInteger startYear = [self yearAtIndex:0];
     NSInteger startValue = [[thePayment valueForKey:key] integerValue];
     NSInteger currentValue = startValue;
+    NSMutableArray *yearArray = [[NSMutableArray alloc] init];
     for (NSInteger i = 1; i < [[API monthPayments] count]; i++) {
         NSInteger currentYear = [self yearAtIndex:i];
 
@@ -72,18 +76,21 @@ static const BOOL kIncludeCurrentYear = YES;
                 startValue = [thePayment.energyCountNew integerValue];
             }
         }
-        
+
         BOOL includeCurrentYear = kIncludeCurrentYear && i == [API monthPayments].count - 1;
         if (currentYear > startYear || includeCurrentYear) {
             MonthPayment *thisPayment = [[API monthPayments] objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
             NSLog(@"For %d the amount %@ consists of = %d%@", startYear, key,currentValue,includeCurrentYear?@"(not completed)":@"");
+            FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:currentValue withKey:key];
+            [yearArray addObject:stat];
             startYear = currentYear;
             startValue = [[thisPayment valueForKey:key] integerValue];
             tempAmount = 0;
         }
     }
     NSLog(@"--------");
+    return yearArray;
 }
 
 
@@ -140,6 +147,14 @@ static const BOOL kIncludeCurrentYear = YES;
 
 - (IBAction)listButtonClicked:(id)sender {
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"Stat Segue"]) {
+        FCStatTableViewController *statTVC = segue.destinationViewController;
+        [statTVC setStatArray:self.fullArray];
+    }
 }
 
 @end

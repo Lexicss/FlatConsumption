@@ -25,5 +25,6 @@ static NSString *kEnergyKey = @"energyCount";
 + (void)setMonthPayments:(NSArray *)amonthPayments;
 + (NSDateComponents *)sharedComponentsForDate:(NSDate *)date;
 + (NSString *)stringWithZeroOfInt:(NSInteger)value;
++ (NSString *)nameOfNum:(NSInteger)num;
 
 @end

@@ -112,7 +112,7 @@ static const BOOL kIncludeCurrentYear = NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self keyOfIndexesNum:section];
+    return [API nameOfNum:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

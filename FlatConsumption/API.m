@@ -59,4 +59,22 @@ static NSCalendar *calendar;
     }
 }
 
++ (NSString *)nameOfNum:(NSInteger)num {
+    switch (num) {
+        case 0:
+            return @"Hot Water on Kitchen";
+        case 1:
+            return @"Cold Water on Kitchen";
+        case 2:
+            return @"Hot Water on Bath";
+        case 3:
+            return @"Cold Water on Bath";
+        case 4:
+            return @"Energy";
+            
+        default:
+            return @"";
+    }
+}
+
 @end

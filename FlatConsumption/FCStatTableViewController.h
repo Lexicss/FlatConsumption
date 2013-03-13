@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MonthPayment.h"
 #import "FCStat.h"
+#import "API.h"
 
 @interface FCStatTableViewController : UITableViewController {
     NSArray *statArray_;

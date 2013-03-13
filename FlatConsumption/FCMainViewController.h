@@ -14,12 +14,6 @@
 
 @interface FCMainViewController : UIViewController <UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UILabel *hotKitchenLabel;
-@property (strong, nonatomic) IBOutlet UILabel *coldKitchenLabel;
-@property (strong, nonatomic) IBOutlet UILabel *hotBathLabel;
-@property (strong, nonatomic) IBOutlet UILabel *coldBathLabel;
-@property (strong, nonatomic) IBOutlet UIButton *listButton;
-@property (strong, nonatomic) IBOutlet UILabel *energyLabel;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-- (IBAction)listButtonClicked:(id)sender;
 @end

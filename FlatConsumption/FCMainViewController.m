@@ -41,13 +41,7 @@ static const BOOL kIncludeCurrentYear = NO;
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
     NSArray *payments = [API monthPayments];
-    
-//    self.hotKitchenLabel.text = [self textForKey:@"hotKitchenWaterCount" withArray:payments];
-//    self.coldKitchenLabel.text = [self textForKey:@"coldKitchenWaterCount" withArray:payments];
-//    self.hotBathLabel.text = [self textForKey:@"hotBathWaterCount" withArray:payments];
-//    self.coldBathLabel.text = [self textForKey:@"coldBathWaterCount" withArray:payments];
-//    self.energyLabel.text = [self textForKey:@"energyCount" withArray:payments];
-    
+
     self.hotKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"hotKitchenWaterCount" withArray:payments];
     self.coldKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"coldKitchenWaterCount" withArray:payments];
     self.hotBathIndexes = [self indexesOfMaxConsumptionForKey:@"hotBathWaterCount" withArray:payments];
@@ -214,8 +208,8 @@ static const BOOL kIncludeCurrentYear = NO;
 }
 
 - (NSInteger)deltaForKey:(NSString *)key withIndex:(NSInteger)index inArray:(NSArray *)array {
-    MonthPayment *previousPayment; //= array[index-1];
-    MonthPayment *currentPayment; //= array[index];
+    MonthPayment *previousPayment;
+    MonthPayment *currentPayment;
     
     if (IsAscending) {
         previousPayment = array[index - 1];
@@ -230,35 +224,12 @@ static const BOOL kIncludeCurrentYear = NO;
     return curValue - prevValue;
 }
 
-//- (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array {
-//    NSInteger index = [self indexesOfMaxConsumptionForKey:key withArray:array];
-//   // NSArray *indexes = [self indexesOfMaxConsumptionForKey:key withArray:array];
-//    NSString *resultText;
-//    if (index > 0) {
-//        MonthPayment *prev; //= array[index - 1];
-//        MonthPayment *cur; //= array[index];
-//        if (IsAscending) {
-//            prev = array[index - 1];
-//            cur = array[index];
-//        } else {
-//            prev = array[index];
-//            cur = array[index - 1];
-//        }
-//        
-//        NSInteger delta = [self deltaForKey:key withIndex:index inArray:array];
-//        resultText = [NSString stringWithFormat:@"From %@ to %@ - %d", [self stringFromDate:prev.date], [self stringFromDate:cur.date], delta];
-//    } else {
-//        resultText = @"";
-//    }
-//    
-//    return resultText;
-//}
 
 - (NSString *)textForKey:(NSString *)key withArray:(NSArray *)array andIndex:(NSInteger)selectedIndex {
     NSString *resultText;
     if (index > 0) {
-        MonthPayment *prev; //= array[index - 1];
-        MonthPayment *cur; //= array[index];
+        MonthPayment *prev;
+        MonthPayment *cur; 
         if (IsAscending) {
             prev = array[selectedIndex - 1];
             cur = array[selectedIndex];
@@ -281,9 +252,6 @@ static const BOOL kIncludeCurrentYear = NO;
     return [NSString stringWithFormat:@"%d.%d.%d", components.day, components.month, components.year];
 }
 
-- (IBAction)listButtonClicked:(id)sender {
-    
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 

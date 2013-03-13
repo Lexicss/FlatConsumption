@@ -12,135 +12,28 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Kitchen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-na-L0n">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="311" id="TNR-us-fGZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Consumptions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8as-Cu-SVQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Max Consumptions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8as-Cu-SVQ">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="302" id="Au5-hG-FV4"/>
-                                    <constraint firstAttribute="height" constant="21" id="PPg-PF-H8i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cold:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upk-Do-fKi">
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hot:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2J-Uy-v7A">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="Cw6-RB-Fw5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdS-qD-hNx">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hk5-dG-6u5">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-3P-h8p">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="303" id="KAe-Gb-S6J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hot:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-Kn-Zp3">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="vHO-yG-Ida"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cold:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Kw-Na-Tt0">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bg2-9y-lgb">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.14332772399999999" blue="0.084336709100000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWj-yB-nHo">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.035072186980000003" green="0.059754910260000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Energy:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuB-G5-jUE">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="xah-UW-Tlc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxz-fl-2Bw">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="HOA-Fw-0mp"/>
-                                    <constraint firstAttribute="width" constant="281" id="IIn-ZR-fls"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.67093460650000003" green="0.52699617499999996" blue="0.24783244830000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jPi-ob-RYF">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="228" id="2uX-iA-e92"/>
+                                    <constraint firstAttribute="height" constant="411" id="3Xb-kO-Ho4"/>
                                 </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9Kw-Na-Tt0" firstAttribute="top" secondItem="yXT-Kn-Zp3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0e0-Cm-bBH"/>
-                            <constraint firstItem="Rxz-fl-2Bw" firstAttribute="trailing" secondItem="4vT-qX-w1n" secondAttribute="trailing" type="default" id="2Ca-Lj-3PZ"/>
-                            <constraint firstItem="B2J-Uy-v7A" firstAttribute="leading" secondItem="8as-Cu-SVQ" secondAttribute="leading" type="default" id="2aN-5p-Sh4"/>
-                            <constraint firstItem="kWj-yB-nHo" firstAttribute="baseline" secondItem="9Kw-Na-Tt0" secondAttribute="baseline" type="default" id="3lC-uk-sSq"/>
-                            <constraint firstItem="8as-Cu-SVQ" firstAttribute="centerX" secondItem="jPi-ob-RYF" secondAttribute="centerX" type="default" id="40c-ob-NQF"/>
-                            <constraint firstItem="aEO-na-L0n" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="38" id="5ok-4n-Brd"/>
                             <constraint firstItem="jPi-ob-RYF" firstAttribute="trailing" secondItem="4vT-qX-w1n" secondAttribute="trailing" type="default" id="AiD-jG-CwD"/>
-                            <constraint firstItem="yXT-Kn-Zp3" firstAttribute="leading" secondItem="TaK-3P-h8p" secondAttribute="leading" type="default" id="AqE-0p-QaS"/>
-                            <constraint firstItem="aEO-na-L0n" firstAttribute="centerX" secondItem="8as-Cu-SVQ" secondAttribute="centerX" type="default" id="AqF-bQ-xki"/>
                             <constraint firstItem="jPi-ob-RYF" firstAttribute="leading" secondItem="4vT-qX-w1n" secondAttribute="leading" type="default" id="Dyh-Ui-QI5"/>
-                            <constraint firstItem="wuB-G5-jUE" firstAttribute="leading" secondItem="4vT-qX-w1n" secondAttribute="leading" constant="35" id="H1M-xz-MZR"/>
-                            <constraint firstItem="WdS-qD-hNx" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="76" id="Hbr-Dm-T74"/>
-                            <constraint firstItem="Bg2-9y-lgb" firstAttribute="leading" secondItem="yXT-Kn-Zp3" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="LKl-CZ-uCS"/>
-                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="WdS-qD-hNx" secondAttribute="leading" type="default" id="LO7-Ik-rJ9"/>
-                            <constraint firstItem="Upk-Do-fKi" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="101" id="MQn-KL-Io9"/>
-                            <constraint firstItem="kWj-yB-nHo" firstAttribute="leading" secondItem="9Kw-Na-Tt0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="NY8-8a-uyN"/>
-                            <constraint firstItem="Bg2-9y-lgb" firstAttribute="baseline" secondItem="yXT-Kn-Zp3" secondAttribute="baseline" type="default" id="OjV-xs-v9N"/>
-                            <constraint firstItem="8as-Cu-SVQ" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="6" id="Qr7-Zd-AEI"/>
-                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="top" secondItem="Upk-Do-fKi" secondAttribute="top" type="default" id="RbE-J3-zPV"/>
-                            <constraint firstItem="kWj-yB-nHo" firstAttribute="leading" secondItem="Bg2-9y-lgb" secondAttribute="leading" type="default" id="WQG-n1-l38"/>
-                            <constraint firstItem="B2J-Uy-v7A" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="75" id="a67-2K-IkJ"/>
-                            <constraint firstItem="TaK-3P-h8p" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="96" id="bF2-4B-Unj"/>
-                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="leading" secondItem="Upk-Do-fKi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="di9-KQ-ZWy"/>
-                            <constraint firstItem="Hk5-dG-6u5" firstAttribute="baseline" secondItem="Upk-Do-fKi" secondAttribute="baseline" type="default" id="fQ6-uq-8hX"/>
-                            <constraint firstItem="TaK-3P-h8p" firstAttribute="leading" secondItem="4vT-qX-w1n" secondAttribute="leading" constant="49" id="ljU-wj-HI1"/>
+                            <constraint firstAttribute="trailing" secondItem="8as-Cu-SVQ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VO4-RJ-GBr"/>
                             <constraint firstItem="jPi-ob-RYF" firstAttribute="bottom" secondItem="4vT-qX-w1n" secondAttribute="bottom" type="default" id="mEz-gb-Uko"/>
-                            <constraint firstItem="yXT-Kn-Zp3" firstAttribute="top" secondItem="TaK-3P-h8p" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="or1-AL-B45"/>
-                            <constraint firstItem="Upk-Do-fKi" firstAttribute="leading" secondItem="B2J-Uy-v7A" secondAttribute="leading" type="default" id="sFN-fv-v1i"/>
-                            <constraint firstItem="WdS-qD-hNx" firstAttribute="leading" secondItem="B2J-Uy-v7A" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="v6U-IB-ZKw"/>
-                            <constraint firstItem="Rxz-fl-2Bw" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="201" id="vD2-vp-C3h"/>
-                            <constraint firstItem="wuB-G5-jUE" firstAttribute="top" secondItem="4vT-qX-w1n" secondAttribute="top" constant="178" id="vEC-Ep-hK8"/>
-                            <constraint firstItem="9Kw-Na-Tt0" firstAttribute="leading" secondItem="yXT-Kn-Zp3" secondAttribute="leading" type="default" id="xGM-L8-0Q6"/>
+                            <constraint firstItem="jPi-ob-RYF" firstAttribute="top" secondItem="8as-Cu-SVQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="u1U-aZ-1bg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Statistics" id="DHl-Mp-agu"/>
@@ -152,11 +45,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="coldBathLabel" destination="kWj-yB-nHo" id="eRl-O0-9pd"/>
-                        <outlet property="coldKitchenLabel" destination="Hk5-dG-6u5" id="G89-0d-bDv"/>
-                        <outlet property="energyLabel" destination="Rxz-fl-2Bw" id="gM2-QB-hhg"/>
-                        <outlet property="hotBathLabel" destination="Bg2-9y-lgb" id="T7a-Kn-mrC"/>
-                        <outlet property="hotKitchenLabel" destination="WdS-qD-hNx" id="Ch9-oU-lMZ"/>
                         <outlet property="tableView" destination="jPi-ob-RYF" id="5Du-EN-h3a"/>
                     </connections>
                 </viewController>
@@ -703,6 +591,74 @@
         <image name="forkknife.jpeg" width="50" height="49"/>
         <image name="shower.jpg" width="50" height="47"/>
     </resources>
+    <classes>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="FCAddViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCAddViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="coldBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="coldKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyFromTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energySwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="energyTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyToTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastColdBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastColdKichenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastEnergyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastHotBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastHotKichenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="FCCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="coldBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="coldKitchenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotBathLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hotKitchenLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FCEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="coldBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="coldKitchenTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyFromTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energySwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="energyTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="energyToTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotBathTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="hotKitchenTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FCMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCMainViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="FCMonthPaymentTableViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCMonthPaymentTableViewController.h"/>
+        </class>
+        <class className="FCStatTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FCStatTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

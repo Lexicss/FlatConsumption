@@ -35,25 +35,23 @@ static const BOOL kIncludeCurrentYear = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSLog(@"We have %d objects", [API monthPayments].count);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Im nain are %d objects", [[API monthPayments] count]);
+    [super viewWillAppear:animated];
+    
     NSArray *payments = [API monthPayments];
-
-    self.hotKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"hotKitchenWaterCount" withArray:payments];
-    self.coldKitchenIndexes = [self indexesOfMaxConsumptionForKey:@"coldKitchenWaterCount" withArray:payments];
-    self.hotBathIndexes = [self indexesOfMaxConsumptionForKey:@"hotBathWaterCount" withArray:payments];
-    self.coldBathIndexes = [self indexesOfMaxConsumptionForKey:@"coldBathWaterCount" withArray:payments];
-    self.energyIndexes = [self indexesOfMaxConsumptionForKey:@"energyCount" withArray:payments];
+    self.hotKitchenIndexes = [self indexesOfMaxConsumptionForKey:kHotKitchenKey withArray:payments];
+    self.coldKitchenIndexes = [self indexesOfMaxConsumptionForKey:kColdKitchenKey withArray:payments];
+    self.hotBathIndexes = [self indexesOfMaxConsumptionForKey:kHotBathKey withArray:payments];
+    self.coldBathIndexes = [self indexesOfMaxConsumptionForKey:kColdBathKey withArray:payments];
+    self.energyIndexes = [self indexesOfMaxConsumptionForKey:kEnergyKey withArray:payments];
     
-    NSArray *hotKitchenArray = [self calcAnnualForKey:@"hotKitchenWaterCount"];
-    NSArray *coldKitchenArray = [self calcAnnualForKey:@"coldKitchenWaterCount"];
-    NSArray *hotBathArray = [self calcAnnualForKey:@"hotBathWaterCount"];
-    NSArray *coldBathArray = [self calcAnnualForKey:@"coldBathWaterCount"];
-    
-    NSArray *energyArray = [self calcAnnualForKey:@"energyCount"];
+    NSArray *hotKitchenArray = [self calcAnnualForKey:kHotKitchenKey];
+    NSArray *coldKitchenArray = [self calcAnnualForKey:kColdKitchenKey];
+    NSArray *hotBathArray = [self calcAnnualForKey:kHotBathKey];
+    NSArray *coldBathArray = [self calcAnnualForKey:kColdBathKey];
+    NSArray *energyArray = [self calcAnnualForKey:kEnergyKey];
     
     NSArray *allArray = @[hotKitchenArray, coldKitchenArray, hotBathArray, coldBathArray, energyArray];
     [self setFullArray:allArray];
@@ -65,11 +63,11 @@ static const BOOL kIncludeCurrentYear = NO;
     [self.tableView setDataSource:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Keys
 
 - (NSString *)keyOfIndexesNum:(NSInteger)num {
     switch (num) {
@@ -92,20 +90,22 @@ static const BOOL kIncludeCurrentYear = NO;
 - (NSString *)keyOfWaterCountNum:(NSInteger)num {
     switch (num) {
         case 0:
-            return @"hotKitchenWaterCount";
+            return kHotKitchenKey;
         case 1:
-            return @"coldKitchenWaterCount";
+            return kColdKitchenKey;
         case 2:
-            return @"hotBathWaterCount";
+            return kHotBathKey;
         case 3:
-            return @"coldBathWaterCount";
+            return kColdBathKey;
         case 4:
-            return @"energyCount";
+            return kEnergyKey;
             
         default:
             return @"";
     }
 }
+
+#pragma mark - TableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 5;
@@ -136,6 +136,8 @@ static const BOOL kIncludeCurrentYear = NO;
     return cell;
 }
 
+#pragma mark - Custom
+
 - (NSArray *)calcAnnualForKey:(NSString *)key {
     NSArray *workArray;
     if (IsAscending) {
@@ -153,7 +155,7 @@ static const BOOL kIncludeCurrentYear = NO;
     for (NSInteger i = 1; i < [workArray count]; i++) {
         NSInteger currentYear = [self yearAtIndex:i inArray:workArray];
 
-        if ([key isEqualToString:@"energyCount"]) {
+        if ([key isEqualToString:kEnergyKey]) {
             thePayment = [workArray objectAtIndex:i];
             if ([thePayment.energyCount boolValue]) {
                 tempAmount += [thePayment.energyCountOld integerValue] - startValue;
@@ -165,7 +167,6 @@ static const BOOL kIncludeCurrentYear = NO;
         if (currentYear > startYear || includeCurrentYear) {
             MonthPayment *thisPayment = [workArray objectAtIndex:i];
             currentValue = [[thisPayment valueForKey:key] integerValue] - startValue + tempAmount;
-            NSLog(@"For %d the amount %@ consists of = %d%@", startYear, key,currentValue,includeCurrentYear?@"(not completed)":@"");
             FCStat *stat = [[FCStat alloc] initWithYear:startYear withValue:currentValue withKey:key];
             [yearArray addObject:stat];
             startYear = currentYear;
@@ -173,7 +174,6 @@ static const BOOL kIncludeCurrentYear = NO;
             tempAmount = 0;
         }
     }
-    NSLog(@"--------");
     return yearArray;
 }
 

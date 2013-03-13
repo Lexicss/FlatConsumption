@@ -29,8 +29,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	[self setShoulSelectDate:NO];
     self.pickerInputView = [[UIDatePicker alloc] init];
@@ -82,14 +81,13 @@
     [self.view addGestureRecognizer:tapGesture];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
 #pragma mark - TextField Delegate
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (textField == self.dateTextField) {
         return NO;
@@ -111,6 +109,8 @@
         }
     }
 }
+
+#pragma mark - Actions
 
 - (void)valueChanged:(UISwitch *)theSwitch {
     [self.energyFromTextField setEnabled:[theSwitch isOn]];
@@ -149,6 +149,8 @@
     [self.delegate theSaveButtonOnEditWasTapped:self];
     
 }
+
+#pragma mark - Custom
 
 - (void)putDate {
     

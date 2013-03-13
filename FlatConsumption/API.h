@@ -10,6 +10,12 @@
 
 static BOOL IsAscending = NO;
 
+static NSString *kHotKitchenKey= @"hotKitchenWaterCount";
+static NSString *kColdKitchenKey = @"coldKitchenWaterCount";
+static NSString *kHotBathKey = @"hotBathWaterCount";
+static NSString *kColdBathKey = @"coldBathWaterCount";
+static NSString *kEnergyKey = @"energyCount";
+
 @interface API : NSObject
 
 + (NSString *) entityName;

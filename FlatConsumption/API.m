@@ -12,6 +12,7 @@ static const NSString *kEntityName = @"MonthPayment";
 static NSArray *monthPayments;
 static NSCalendar *calendar;
 
+
 @implementation API
 
 + (void)initialize {

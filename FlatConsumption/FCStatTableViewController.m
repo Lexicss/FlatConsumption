@@ -15,8 +15,7 @@
 @implementation FCStatTableViewController
 @synthesize statArray = statArray_;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -24,37 +23,27 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     NSLog(@"Array has %d objects", [self.statArray count]);
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [statArray_ count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray *monthArray = statArray_[section];
     return [monthArray count];
 }
@@ -65,8 +54,7 @@
     return [stat name];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Statistic Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -77,10 +65,12 @@
     NSArray *currentArray = [statArray_ objectAtIndex:indexPath.section];
     NSString *yearString;
     if ([self maxIndexInArray:currentArray] == indexPath.row) {
-        yearString = [NSString stringWithFormat:@"%@ - max",[((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+        yearString = [NSString stringWithFormat:@"%@ - max",
+                      [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
         cell.textLabel.textColor = [UIColor redColor];
     } else if ([self minIndexInArray:currentArray] == indexPath.row) {
-        yearString = [NSString stringWithFormat:@"%@ - min",[((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+        yearString = [NSString stringWithFormat:@"%@ - min",
+                      [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
         cell.textLabel.textColor = [UIColor greenColor];
     } else {
         yearString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue];
@@ -134,18 +124,8 @@
 }
 */
 
-#pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
+#pragma mark - calculate min & max
 
 - (NSInteger)minIndexInArray:(NSArray *)statArray {
     NSInteger minValue = [[(FCStat *)statArray[0] valueNumber] integerValue];

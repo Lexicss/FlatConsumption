@@ -30,8 +30,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self setupFetchedResultsController];
 }
+
+#pragma mark - TableView DataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Month Cell";
@@ -40,13 +43,10 @@
     
     if (!cell) {
         cell = [[FCCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.dateLabel.font = [UIFont fontWithName:@"Baskerville-BoldItalic" size:17];
+        cell.dateLabel.font = DATE_FONT;
     }
     
     MonthPayment *mp = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateStyle:NSDateFormatterMediumStyle];
     
     NSDateComponents *components = [API sharedComponentsForDate:mp.date];
     NSString *dateText = [NSString stringWithFormat:@"%d.%@.%d",[components day], [API stringWithZeroOfInt:[components month]], [components year]];
@@ -75,6 +75,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"%d records", [self.fetchedResultsController.fetchedObjects count]];
 }
+
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Add Payment Segue"]) {

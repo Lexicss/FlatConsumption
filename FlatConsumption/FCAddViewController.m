@@ -28,8 +28,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
 @synthesize selectedDate = _selectedDate;
 @synthesize managedObjectContext = _managedObjectContext;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -37,8 +36,7 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
     [self setShoulSelectDate:NO];
@@ -83,36 +81,18 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     self.scrollView.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    if ([self.dateTextField isFirstResponder] && [touch view] != self.dateTextField) {
-        [self.dateTextField resignFirstResponder];
-        [self putDate];
-    }
-    
-    for (UITextField *field in self.fieldsSet) {
-        if ([field isFirstResponder] && [touch view] != field) {
-            [field resignFirstResponder];
-            [self calcDeltaForField:field];
-            break;
-        }
-    }
-    
-    [super touchesBegan:touches withEvent:event];
-}
-*/
+#pragma mark - ScrollView Delegate
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.focusedField resignFirstResponder];
 }
 
 #pragma mark - Textfield Delegate
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
     if (textField == self.dateTextField) {
         return NO;
@@ -260,33 +240,33 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216 + 64;
     NSString *initialText;
     NSString *key;
     if ([field isEqual:self.hotKitchenTextField]) {
-        key = @"hotKitchenWaterCount";
-        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.hotKitchenWaterCount];
-        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.hotKitchenWaterCount integerValue];
+        key = kHotKitchenKey;
+        initialText = [self textOfLastMPForKey:key];
+        NSInteger last = [self integerOfLastMPForKey:key];
         NSInteger current = [[self.hotKitchenTextField text] integerValue];
         self.lastHotKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.coldKitchenTextField]) {
-        key = @"coldKitchenWaterCount";
-        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.coldKitchenWaterCount];
-        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.coldKitchenWaterCount integerValue];
+        key = kColdKitchenKey;
+        initialText = [self textOfLastMPForKey:key];
+        NSInteger last = [self integerOfLastMPForKey:key];
         NSInteger current = [[self.coldKitchenTextField text] integerValue];
         self.lastColdKichenLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.hotBathTextField]) {
-        key = @"hotBathWaterCount";
-        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.hotBathWaterCount];
-        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.hotBathWaterCount integerValue];
+        key = kHotBathKey;
+        initialText = [self textOfLastMPForKey:key];
+        NSInteger last = [self integerOfLastMPForKey:key];
         NSInteger current = [[self.hotBathTextField text] integerValue];
         self.lastHotBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.coldBathTextField]) {
-        key = @"coldBathWaterCount";
-        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.coldBathWaterCount];
-        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.coldBathWaterCount integerValue];
+        key = kColdBathKey;
+        initialText = [self textOfLastMPForKey:key];
+        NSInteger last = [self integerOfLastMPForKey:key];
         NSInteger current = [[self.coldBathTextField text] integerValue];
         self.lastColdBathLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     } else if ([field isEqual:self.energyTextField]) {
-        key = @"energyCount";
-        initialText = [self textOfLastMPForKey:key];//[NSString stringWithFormat:LAST, self.lastMonthPayment.energyCount];
-        NSInteger last = [self integerOfLastMPForKey:key];//[self.lastMonthPayment.energyCount integerValue];
+        key = kEnergyKey;
+        initialText = [self textOfLastMPForKey:key];
+        NSInteger last = [self integerOfLastMPForKey:key];
         NSInteger current = [[self.energyTextField text] integerValue];
         self.lastEnergyLabel.text = [NSString stringWithFormat:@"%@ (%d)",initialText, (current - last)];
     }

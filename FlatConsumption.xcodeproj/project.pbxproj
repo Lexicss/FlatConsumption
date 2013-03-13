@@ -42,8 +42,6 @@
 		7C3A993616E78B860054EA2D /* electricity.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = electricity.jpeg; path = FlatConsumption/electricity.jpeg; sourceTree = "<group>"; };
 		7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCCell.h; path = FlatConsumption/FCCell.h; sourceTree = "<group>"; };
 		7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCCell.m; path = FlatConsumption/FCCell.m; sourceTree = "<group>"; };
-		7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthPayment.h; sourceTree = "<group>"; };
-		7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthPayment.m; sourceTree = "<group>"; };
 		7CAA46D516E8A33800F1E5EA /* UITextField+UIFieldAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+UIFieldAttr.h"; path = "FlatConsumption/UITextField+UIFieldAttr.h"; sourceTree = "<group>"; };
 		7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+UIFieldAttr.m"; path = "FlatConsumption/UITextField+UIFieldAttr.m"; sourceTree = "<group>"; };
 		7CDA99CD16EF16CE00248D3B /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Reverse.h"; path = "FlatConsumption/NSArray+Reverse.h"; sourceTree = "<group>"; };
@@ -171,8 +169,6 @@
 				84DBFA8A16E34A510048A93E /* FCAppDelegate.m */,
 				84DBFA9216E34A510048A93E /* MainStoryboard.storyboard */,
 				84DBFA9516E34A510048A93E /* FlatConsumption.xcdatamodeld */,
-				7C4F6D4916E639BB00BCF9A0 /* MonthPayment.h */,
-				7C4F6D4A16E639BB00BCF9A0 /* MonthPayment.m */,
 				84DBFA8116E34A510048A93E /* Supporting Files */,
 				84DBFAB516E3631F0048A93E /* API.h */,
 				84DBFAB616E3631F0048A93E /* API.m */,

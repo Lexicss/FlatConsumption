@@ -11,6 +11,7 @@
 static const NSString *kEntityName = @"MonthPayment";
 static NSArray *monthPayments;
 static NSCalendar *calendar;
+static NSFetchedResultsController *fetchedResultsController;
 
 
 @implementation API
@@ -75,6 +76,24 @@ static NSCalendar *calendar;
         default:
             return @"";
     }
+}
+
++ (NSFetchedResultsController *)fetchedResultsControllerWithContext:(NSManagedObjectContext *)context {
+    if (fetchedResultsController == nil) {
+        NSString *entityName = [self entityName];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date"
+                                                                  ascending:IsAscending
+                                                                   selector:@selector(localizedCaseInsensitiveCompare:)]];
+        
+        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                       managedObjectContext:context
+                                                                         sectionNameKeyPath:nil
+                                                                                  cacheName:nil];
+        
+        
+    }
+    return fetchedResultsController;
 }
 
 @end

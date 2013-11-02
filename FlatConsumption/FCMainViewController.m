@@ -8,7 +8,7 @@
 
 #import "FCMainViewController.h"
 
-static const BOOL kIncludeCurrentYear = NO;
+static const BOOL kIncludeCurrentYear = YES;
 
 @interface FCMainViewController ()
 @property(strong, nonatomic) NSArray *fullArray;
@@ -157,9 +157,11 @@ static const BOOL kIncludeCurrentYear = NO;
 
         if ([key isEqualToString:kEnergyKey]) {
             thePayment = [workArray objectAtIndex:i];
-            if ([thePayment.energyCount boolValue]) {
+            if ([thePayment.energyCountChanged boolValue]) {
                 tempAmount += [thePayment.energyCountOld integerValue] - startValue;
                 startValue = [thePayment.energyCountNew integerValue];
+                
+                NSLog(@"old value - %d, new value - %d",[thePayment.energyCountOld integerValue], [thePayment.energyCountNew integerValue] );
             }
         }
 
@@ -188,16 +190,13 @@ static const BOOL kIncludeCurrentYear = NO;
 
 - (NSArray *)indexesOfMaxConsumptionForKey:(NSString *)key withArray:(NSArray *)array {
     NSInteger maxHotDelta = 0;
-    //NSInteger index = 0;
     NSMutableArray *maxIndexesArray = [[NSMutableArray alloc] init];
     
     for (NSInteger i = 1; i < [array count]; i++) {
         NSInteger delta = [self deltaForKey:key withIndex:i inArray:array];
         if (delta == maxHotDelta) {
-            //index = i;
             [maxIndexesArray addObject:[NSNumber numberWithInt:i]];
         } else if (delta > maxHotDelta) {
-            //index = i;
             [maxIndexesArray removeAllObjects];
             [maxIndexesArray addObject:[NSNumber numberWithInt:i]];
             maxHotDelta = delta;
@@ -221,7 +220,15 @@ static const BOOL kIncludeCurrentYear = NO;
     
     NSInteger curValue = [[currentPayment valueForKey:key] integerValue];
     NSInteger prevValue = [[previousPayment valueForKey:key] integerValue];
-    return curValue - prevValue;
+    
+    if ([key isEqualToString:kEnergyKey] && [[currentPayment energyCountChanged] boolValue]) {
+        NSInteger afterChange = curValue - [[currentPayment energyCountNew] integerValue];
+        NSInteger beforeChange = [[currentPayment energyCountOld] integerValue] - prevValue;
+        NSLog(@"on counter changed %@ consumption is: %d", [currentPayment date] ,afterChange + beforeChange);
+        return afterChange + beforeChange;
+    } else {
+        return curValue - prevValue;
+    }
 }
 
 

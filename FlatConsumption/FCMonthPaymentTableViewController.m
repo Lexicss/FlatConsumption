@@ -18,12 +18,7 @@
 @synthesize selectedMonthPayment = _selectedMonthPayment;
 
 - (void)setupFetchedResultsController {
-    NSString *entityName = [API entityName];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date"
-                                                                                     ascending:IsAscending
-                                                                                      selector:@selector(localizedCaseInsensitiveCompare:)]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [API fetchedResultsControllerWithContext:self.managedObjectContext];
     [self performFetch];
     [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
 }
@@ -49,7 +44,8 @@
     MonthPayment *mp = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     NSDateComponents *components = [API sharedComponentsForDate:mp.date];
-    NSString *dateText = [NSString stringWithFormat:@"%d.%@.%d",[components day], [API stringWithZeroOfInt:[components month]], [components year]];
+    NSString *dateText = [NSString stringWithFormat:@"%d.%@.%d",[components day],
+                          [API stringWithZeroOfInt:[components month]], [components year]];
     
     if (cell.dateLabel.font != DATE_FONT) {
         [cell.dateLabel setFont:DATE_FONT];
@@ -85,6 +81,7 @@
         addVC.managedObjectContext = self.managedObjectContext;
         
         NSArray *recodrs = [self.fetchedResultsController fetchedObjects];
+        
         if ([recodrs count] > 0) {
             if (IsAscending) {
                 addVC.lastMonthPayment = [recodrs lastObject];
@@ -99,6 +96,7 @@
         FCEditViewController *editVC = segue.destinationViewController;
         editVC.delegate = self;
         editVC.managedObjectContext = self.managedObjectContext;
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         MonthPayment *selectedPayment = [self.fetchedResultsController objectAtIndexPath:indexPath];
         editVC.monthPayment = selectedPayment;

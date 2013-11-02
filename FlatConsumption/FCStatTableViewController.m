@@ -49,9 +49,6 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    NSArray *statArray = statArray_[section];
-//    FCStat *stat = statArray[0];
-//    return [stat name];
     return [API nameOfNum:section];
 }
 

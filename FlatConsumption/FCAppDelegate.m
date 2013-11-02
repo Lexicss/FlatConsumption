@@ -18,10 +18,7 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (BOOL)setupFetchedResultsController {
-    NSString *entityName = [API entityName];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [API fetchedResultsControllerWithContext:self.managedObjectContext];
     NSError *fetchError;
     [self.fetchedResultsController performFetch:&fetchError];
     if (fetchError) {

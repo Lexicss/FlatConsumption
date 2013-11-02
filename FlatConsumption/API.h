@@ -26,5 +26,6 @@ static NSString *kEnergyKey = @"energyCount";
 + (NSDateComponents *)sharedComponentsForDate:(NSDate *)date;
 + (NSString *)stringWithZeroOfInt:(NSInteger)value;
 + (NSString *)nameOfNum:(NSInteger)num;
++ (NSFetchedResultsController *)fetchedResultsControllerWithContext:(NSManagedObjectContext *) context;
 
 @end

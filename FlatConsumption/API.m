@@ -96,4 +96,24 @@ static NSFetchedResultsController *fetchedResultsController;
     return fetchedResultsController;
 }
 
++ (void)debugView:(UIView *)view withColor:(UIColor *)color {
+    UIColor *debugColor;
+    
+    if (color) {
+        debugColor = color;
+    } else {
+        color = [UIColor redColor];
+    }
+    
+    [view.layer setBorderColor:[debugColor CGColor]];
+    [view.layer setBorderWidth:1];
+}
+
++ (NSDate *)dateFromString:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy"];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
+
 @end

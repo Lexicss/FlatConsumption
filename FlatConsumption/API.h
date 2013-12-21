@@ -29,4 +29,7 @@ static NSString *kAllWater = @"allWater";
 + (NSString *)nameOfNum:(NSInteger)num;
 + (NSFetchedResultsController *)fetchedResultsControllerWithContext:(NSManagedObjectContext *) context;
 
++ (void)debugView:(UIView *)view withColor:(UIColor *)color;
++ (NSDate *)dateFromString:(NSString *)string;
+
 @end

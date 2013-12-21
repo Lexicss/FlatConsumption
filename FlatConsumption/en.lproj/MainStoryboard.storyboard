@@ -229,6 +229,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Month Payments" id="QME-Dp-UC8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="y82-EC-H3J">
+                            <connections>
+                                <action selector="restoreButtonClicked:" destination="2ib-Fa-5Wa" id="gZA-4Z-N75"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9dz-zD-XRs">
                             <connections>
                                 <segue destination="1fq-hc-uor" kind="push" identifier="Add Payment Segue" id="oIA-3a-BE1"/>

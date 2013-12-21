@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) MonthPayment *selectedMonthPayment;
+- (IBAction)restoreButtonClicked:(id)sender;
 
 @end

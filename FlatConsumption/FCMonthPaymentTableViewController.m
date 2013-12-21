@@ -200,10 +200,37 @@
     [self addDate:@"11.06.2008" kitHot:7 kitCold:3 batHot:17 batCold:29 energy:1700];
     [self addDate:@"30.08.2008" kitHot:8 kitCold:4 batHot:19 batCold:34 energy:1950];
     [self addDate:@"12.09.2008" kitHot:8 kitCold:4 batHot:20 batCold:34 energy:2000];
-    [self addDate:@"16.10.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2100];
-    [self addDate:@"14.11.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2200];
-    [self addDate:@"15.12.2008" kitHot:11 kitCold:5 batHot:28 batCold:42 energy:2300];
-    [self addDate:@"20.01.2009" kitHot:12 kitCold:6 batHot:31 batCold:44 energy:2450];
+    [self addDate:@"16.10.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2050];
+    [self addDate:@"14.11.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2100];
+    [self addDate:@"15.12.2008" kitHot:11 kitCold:5 batHot:28 batCold:42 energy:2150];
+    [self addDate:@"20.01.2009" kitHot:12 kitCold:6 batHot:31 batCold:44 energy:2200];
+    
+    [self addDate:@"4.02.2009" kitHot:13 kitCold:6 batHot:32 batCold:46 energy:2220];
+    [self addDate:@"16.03.2009" kitHot:14 kitCold:6 batHot:34 batCold:49 energy:2290];
+    [self addDate:@"7.04.2009" kitHot:15 kitCold:6 batHot:35 batCold:50 energy:2310];
+    [self addDate:@"1.05.2009" kitHot:15 kitCold:6 batHot:36 batCold:52 energy:2345];
+    [self addDate:@"1.06.2009" kitHot:16 kitCold:7 batHot:36 batCold:58 energy:2393];
+    [self addDate:@"1.07.2009" kitHot:16 kitCold:7 batHot:37 batCold:62 energy:2439];
+    [self addDate:@"3.08.2009" kitHot:17 kitCold:7 batHot:39 batCold:66 energy:2504];
+    [self addDate:@"1.09.2009" kitHot:17 kitCold:7 batHot:39 batCold:69 energy:2562];
+    [self addDate:@"1.10.2009" kitHot:18 kitCold:7 batHot:41 batCold:72 energy:2614];
+    [self addDate:@"1.11.2009" kitHot:19 kitCold:7 batHot:44 batCold:78 energy:2678];
+    [self addDate:@"1.12.2009" kitHot:21 kitCold:8 batHot:46 batCold:83 energy:2749];
+    [self addChangedDate:@"1.01.2010" kitHot:22 kitCold:8 batHot:48 batCold:88 energy:4409 from:2799 to:4395];
+    
+    [self addDate:@"1.02.2010" kitHot:22 kitCold:8 batHot:48 batCold:88 energy:4409];
+    [self addDate:@"1.03.2010" kitHot:22 kitCold:8 batHot:48 batCold:89 energy:4449];
+    [self addDate:@"1.04.2010" kitHot:22 kitCold:8 batHot:51 batCold:96 energy:4593];
+    [self addDate:@"3.05.2010" kitHot:23 kitCold:8 batHot:52 batCold:101 energy:4664];
+    [self addDate:@"3.06.2010" kitHot:23 kitCold:9 batHot:52 batCold:108 energy:4736];
+    [self addDate:@"1.07.2010" kitHot:23 kitCold:9 batHot:56 batCold:115 energy:4805];
+    [self addDate:@"1.08.2010" kitHot:24 kitCold:9 batHot:57 batCold:118 energy:4901];
+    [self addDate:@"1.09.2010" kitHot:24 kitCold:9 batHot:58 batCold:120 energy:4970];
+    [self addDate:@"1.10.2010" kitHot:24 kitCold:9 batHot:59 batCold:123 energy:5034];
+    [self addDate:@"1.11.2010" kitHot:25 kitCold:9 batHot:61 batCold:126 energy:5131];
+    [self addDate:@"1.12.2010" kitHot:25 kitCold:9 batHot:62 batCold:131 energy:5200];
+    [self addDate:@"3.01.2011" kitHot:26 kitCold:9 batHot:64 batCold:135 energy:5201];
+    
     
     [self.tableView reloadData];
 }
@@ -222,6 +249,31 @@
     [monthPayment setHotBathWaterCount:[NSNumber numberWithInt:batHot]];
     [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:batCold]];
     [monthPayment setEnergyCount:[NSNumber numberWithInt:energy]];
+    [monthPayment setEnergyCountChanged:@NO];
+    
+    NSError *saveError;
+    [self.managedObjectContext save:&saveError];
+}
+
+- (void)addChangedDate:(NSString *)date
+                kitHot:(NSInteger)kitHot
+               kitCold:(NSInteger)kitCold
+                batHot:(NSInteger)batHot
+               batCold: (NSInteger)batCold
+                energy:(NSInteger)energy
+                  from:(NSInteger)from
+                    to:(NSInteger)to {
+    MonthPayment *monthPayment = [NSEntityDescription insertNewObjectForEntityForName:[API entityName]
+                                                               inManagedObjectContext:_managedObjectContext];
+    [monthPayment setDate:[API dateFromString:date]];
+    [monthPayment setHotKitchenWaterCount:[NSNumber numberWithInt:kitHot]];
+    [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:kitCold]];
+    [monthPayment setHotBathWaterCount:[NSNumber numberWithInt:batHot]];
+    [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:batCold]];
+    [monthPayment setEnergyCount:[NSNumber numberWithInt:energy]];
+    [monthPayment setEnergyCountChanged:@YES];
+    [monthPayment setEnergyCountOld:[NSNumber numberWithInt:from]];
+    [monthPayment setEnergyCountNew:[NSNumber numberWithInt:to]];
     
     NSError *saveError;
     [self.managedObjectContext save:&saveError];

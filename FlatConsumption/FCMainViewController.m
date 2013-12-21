@@ -8,6 +8,8 @@
 
 #import "FCMainViewController.h"
 
+#define SECTIONS_COUNT 5
+
 static const BOOL kIncludeCurrentYear = YES;
 
 @interface FCMainViewController ()
@@ -18,6 +20,7 @@ static const BOOL kIncludeCurrentYear = YES;
 @property(strong, nonatomic) NSArray *hotBathIndexes;
 @property(strong, nonatomic) NSArray *coldBathIndexes;
 @property(strong, nonatomic) NSArray *energyIndexes;
+@property(strong, nonatomic) NSArray *allWaterIndexes;
 
 @end
 
@@ -46,12 +49,14 @@ static const BOOL kIncludeCurrentYear = YES;
     self.hotBathIndexes = [self indexesOfMaxConsumptionForKey:kHotBathKey withArray:payments];
     self.coldBathIndexes = [self indexesOfMaxConsumptionForKey:kColdBathKey withArray:payments];
     self.energyIndexes = [self indexesOfMaxConsumptionForKey:kEnergyKey withArray:payments];
+    self.allWaterIndexes = [self indexesOfMaxConsumptionForKey:kAllWater withArray:payments];
     
     NSArray *hotKitchenArray = [self calcAnnualForKey:kHotKitchenKey];
     NSArray *coldKitchenArray = [self calcAnnualForKey:kColdKitchenKey];
     NSArray *hotBathArray = [self calcAnnualForKey:kHotBathKey];
     NSArray *coldBathArray = [self calcAnnualForKey:kColdBathKey];
     NSArray *energyArray = [self calcAnnualForKey:kEnergyKey];
+    
     
     NSArray *allArray = @[hotKitchenArray, coldKitchenArray, hotBathArray, coldBathArray, energyArray];
     [self setFullArray:allArray];
@@ -81,6 +86,8 @@ static const BOOL kIncludeCurrentYear = YES;
             return @"coldBathIndexes";
         case 4:
             return @"energyIndexes";
+        case 5:
+            return @"allWaterIndexes";
             
         default:
             return @"";
@@ -99,6 +106,8 @@ static const BOOL kIncludeCurrentYear = YES;
             return kColdBathKey;
         case 4:
             return kEnergyKey;
+        case 5:
+            return kAllWater;
             
         default:
             return @"";
@@ -108,7 +117,7 @@ static const BOOL kIncludeCurrentYear = YES;
 #pragma mark - TableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return SECTIONS_COUNT;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -149,7 +158,14 @@ static const BOOL kIncludeCurrentYear = YES;
     MonthPayment *thePayment = [workArray objectAtIndex:0];
     NSInteger tempAmount = 0;
     NSInteger startYear = [self yearAtIndex:0 inArray:workArray];
-    NSInteger startValue = [[thePayment valueForKey:key] integerValue];
+    NSInteger startValue;
+    
+    if ([key isEqualToString:kAllWater]) {
+        startValue = [self allWaterForMonth:thePayment];
+    } else {
+        startValue = [[thePayment valueForKey:key] integerValue];
+    }
+
     NSInteger currentValue = startValue;
     NSMutableArray *yearArray = [[NSMutableArray alloc] init];
     for (NSInteger i = 1; i < [workArray count]; i++) {
@@ -218,8 +234,20 @@ static const BOOL kIncludeCurrentYear = YES;
         currentPayment = array[index - 1];
     }
     
-    NSInteger curValue = [[currentPayment valueForKey:key] integerValue];
-    NSInteger prevValue = [[previousPayment valueForKey:key] integerValue];
+    if ([key isEqualToString:kAllWater]) {
+        
+    }
+    
+    NSInteger curValue;
+    NSInteger prevValue;
+    
+    if ([key isEqualToString:kAllWater]) {
+        curValue = [self allWaterForMonth:currentPayment];
+        prevValue = [self allWaterForMonth:previousPayment];
+    } else {
+       curValue = [[currentPayment valueForKey:key] integerValue];
+       prevValue = [[previousPayment valueForKey:key] integerValue];
+    }
     
     if ([key isEqualToString:kEnergyKey] && [[currentPayment energyCountChanged] boolValue]) {
         NSInteger afterChange = curValue - [[currentPayment energyCountNew] integerValue];
@@ -266,6 +294,14 @@ static const BOOL kIncludeCurrentYear = YES;
         FCStatTableViewController *statTVC = segue.destinationViewController;
         [statTVC setStatArray:self.fullArray];
     }
+}
+
+- (NSInteger)allWaterForMonth:(MonthPayment *)payment {
+   NSInteger amount =  [payment.hotBathWaterCount integerValue] + [payment.coldBathWaterCount integerValue] +
+    [payment.hotKitchenWaterCount integerValue] + [payment.coldKitchenWaterCount integerValue];
+    NSLog(@"Water count for month: %d", amount);
+    
+    return amount;
 }
 
 @end

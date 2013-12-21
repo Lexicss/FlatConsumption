@@ -15,6 +15,7 @@ static NSString *kColdKitchenKey = @"coldKitchenWaterCount";
 static NSString *kHotBathKey = @"hotBathWaterCount";
 static NSString *kColdBathKey = @"coldBathWaterCount";
 static NSString *kEnergyKey = @"energyCount";
+static NSString *kAllWater = @"allWater";
 
 @interface API : NSObject
 

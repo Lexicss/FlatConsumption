@@ -103,6 +103,10 @@
     }
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return YES;
+}
+
 #pragma mark - AddMonthPayment Delegate
 
 - (void)theSaveButtonOnAddWasTapped:(FCAddViewController *)controller {

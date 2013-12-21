@@ -155,6 +155,10 @@ static const BOOL kIncludeCurrentYear = YES;
         workArray = [[API monthPayments] reverseArray];
     }
     
+    if ([workArray count] == 0) {
+        return [NSArray array];
+    }
+    
     MonthPayment *thePayment = [workArray objectAtIndex:0];
     NSInteger tempAmount = 0;
     NSInteger startYear = [self yearAtIndex:0 inArray:workArray];

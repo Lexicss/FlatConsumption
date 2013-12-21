@@ -247,7 +247,7 @@
     [monthPayment setHotKitchenWaterCount:[NSNumber numberWithInt:kitHot]];
     [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:kitCold]];
     [monthPayment setHotBathWaterCount:[NSNumber numberWithInt:batHot]];
-    [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:batCold]];
+    [monthPayment setColdBathWaterCount:[NSNumber numberWithInt:batCold]];
     [monthPayment setEnergyCount:[NSNumber numberWithInt:energy]];
     [monthPayment setEnergyCountChanged:@NO];
     
@@ -269,7 +269,7 @@
     [monthPayment setHotKitchenWaterCount:[NSNumber numberWithInt:kitHot]];
     [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:kitCold]];
     [monthPayment setHotBathWaterCount:[NSNumber numberWithInt:batHot]];
-    [monthPayment setColdKitchenWaterCount:[NSNumber numberWithInt:batCold]];
+    [monthPayment setColdBathWaterCount:[NSNumber numberWithInt:batCold]];
     [monthPayment setEnergyCount:[NSNumber numberWithInt:energy]];
     [monthPayment setEnergyCountChanged:@YES];
     [monthPayment setEnergyCountOld:[NSNumber numberWithInt:from]];

@@ -31,5 +31,6 @@ static NSString *kAllWater = @"allWater";
 
 + (void)debugView:(UIView *)view withColor:(UIColor *)color;
 + (NSDate *)dateFromString:(NSString *)string;
++ (NSIndexPath *)previousIndexPathOf:(NSIndexPath *)currentIndexPath withCount:(NSInteger)count;
 
 @end

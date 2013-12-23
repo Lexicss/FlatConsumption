@@ -8,6 +8,7 @@
 
 #import "FCMonthPaymentTableViewController.h"
 #import "FCAppDelegate.h"
+#import "FCSummary.h"
 
 #define DATE_FONT [UIFont fontWithName:@"Baskerville-BoldItalic" size:17]
 #define ENERGY_FONT [UIFont fontWithName:@"MarkerFelt-Thin" size:22]
@@ -30,6 +31,8 @@
     [self performFetch];
     [API setMonthPayments:self.fetchedResultsController.fetchedObjects];
 }
+
+#pragma mark - VC lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,7 +63,16 @@
         cell.dateLabel.font = DATE_FONT;
     }
     
+    NSIndexPath *previousIndexPath = [API previousIndexPathOf:indexPath
+                                                    withCount:[self.fetchedResultsController.fetchedObjects count]];
+    
     MonthPayment *mp = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    MonthPayment *previousMp = [self.fetchedResultsController objectAtIndexPath:previousIndexPath];
+    
+    FCSummary *sum = [[FCSummary alloc] initWithMonthPayment:mp
+                                          andPreviousPayment:previousMp];
+    NSLog(@"HOT BATH: %d, COLD BATH: %d", [sum hotBathWater], [sum coldBathWater]);
+    
     
     NSDateComponents *components = [API sharedComponentsForDate:mp.date];
     NSString *dateText = [NSString stringWithFormat:@"%d.%@.%d",[components day],
@@ -120,23 +132,9 @@
         MonthPayment *selectedPayment = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
         NSInteger count = [self.fetchedResultsController.fetchedObjects count];
-        NSInteger previousRow;
-        
-        if (IsAscending) {
-            if (!indexPath.row) {
-                previousRow= 0;
-            } else {
-                previousRow = indexPath.row - 1;
-            }
-        } else {
-            if (indexPath.row == count - 1) {
-                previousRow = indexPath.row;
-            } else {
-                previousRow = indexPath.row + 1;
-            }
-        }
-        
-        NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:previousRow inSection:0];
+        NSIndexPath *previousIndexPath = [API previousIndexPathOf:indexPath
+                                                        withCount:count];
+
         MonthPayment *previousMonthPayment = [self.fetchedResultsController objectAtIndexPath:previousIndexPath];
         
         editVC.monthPayment = selectedPayment;
@@ -278,12 +276,13 @@
     [self addDate:@"2.01.2013" kitHot:38 kitCold:15 batHot:110 batCold:239 energy:6313];
     
     [self addDate:@"3.02.2013" kitHot:38 kitCold:15 batHot:112 batCold:244 energy:6450];
+    [self addDate:@"2.03.2013" kitHot:39 kitCold:15 batHot:114 batCold:248 energy:6534];
     [self addDate:@"1.04.2013" kitHot:39 kitCold:15 batHot:116 batCold:253 energy:6636];
     [self addDate:@"1.05.2013" kitHot:40 kitCold:15 batHot:118 batCold:258 energy:6745];
     [self addDate:@"1.06.2013" kitHot:40 kitCold:16 batHot:120 batCold:262 energy:6868];
     [self addDate:@"2.07.2013" kitHot:41 kitCold:17 batHot:121 batCold:267 energy:6980];
     [self addDate:@"1.08.2013" kitHot:41 kitCold:17 batHot:123 batCold:272 energy:7079];
-    [self addDate:@"1.09.2013" kitHot:42 kitCold:18 batHot:128 batCold:281 energy:7184];
+    [self addDate:@"1.09.2013" kitHot:42 kitCold:18 batHot:125 batCold:276 energy:7184];
     [self addDate:@"5.10.2013" kitHot:42 kitCold:18 batHot:128 batCold:281 energy:7288];
     [self addDate:@"1.11.2013" kitHot:42 kitCold:18 batHot:130 batCold:284 energy:7383];
     [self addDate:@"1.12.2013" kitHot:43 kitCold:19 batHot:132 batCold:289 energy:7496];

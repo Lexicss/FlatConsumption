@@ -18,6 +18,9 @@
 @property(nonatomic, readonly) NSInteger bathWater;
 @property(nonatomic, readonly) NSInteger energy;
 
+@property(nonatomic, readonly) NSInteger coldBathWater;
+@property(nonatomic, readonly) NSInteger hotBathWater;
+
 
 - (id)initWithMonthPayment:(MonthPayment *)mp
         andPreviousPayment:(MonthPayment *)previousMp;

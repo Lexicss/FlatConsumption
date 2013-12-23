@@ -34,6 +34,9 @@
         _kitchenWater = hk + ck;
         _bathWater = hb + cb;
         _energy = e;
+        
+        _coldBathWater = cb;
+        _hotBathWater = hb;
     }
     
     return self;

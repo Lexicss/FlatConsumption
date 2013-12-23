@@ -116,4 +116,24 @@ static NSFetchedResultsController *fetchedResultsController;
     return date;
 }
 
++ (NSIndexPath *)previousIndexPathOf:(NSIndexPath *)currentIndexPath withCount:(NSInteger)count {
+    NSInteger previousRow;
+    
+    if (IsAscending) {
+        if (!currentIndexPath.row) {
+            previousRow= 0;
+        } else {
+            previousRow = currentIndexPath.row - 1;
+        }
+    } else {
+        if (currentIndexPath.row == count - 1) {
+            previousRow = currentIndexPath.row;
+        } else {
+            previousRow = currentIndexPath.row + 1;
+        }
+    }
+    
+    return [NSIndexPath indexPathForRow:previousRow inSection:currentIndexPath.section];
+}
+
 @end

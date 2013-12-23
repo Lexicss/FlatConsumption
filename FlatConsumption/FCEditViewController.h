@@ -31,9 +31,18 @@
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) IBOutlet UITextField *energyTextField;
 
+@property (strong, nonatomic) IBOutlet UILabel *coldTextField;
+@property (strong, nonatomic) IBOutlet UILabel *hotTextField;
+@property (strong, nonatomic) IBOutlet UILabel *kitchenTextField;
+@property (strong, nonatomic) IBOutlet UILabel *bathTextField;
+@property (strong, nonatomic) IBOutlet UILabel *allTextField;
+@property (strong, nonatomic) IBOutlet UILabel *deltaEnergyTextField;
+
+
 @property (strong, nonatomic) NSManagedObjectContext * managedObjectContext;
 @property (unsafe_unretained, nonatomic) id <EditMonthPaymentDelegate> delegate;
 @property (strong, nonatomic) MonthPayment *monthPayment;
+@property (strong, nonatomic) MonthPayment *previousMonthPayment;
 
 - (IBAction)save:(id)sender;
 @end

@@ -14,6 +14,7 @@
 		7CAA46D716E8A33800F1E5EA /* UITextField+UIFieldAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA46D616E8A33800F1E5EA /* UITextField+UIFieldAttr.m */; };
 		7CDA99CF16EF16CE00248D3B /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA99CE16EF16CE00248D3B /* NSArray+Reverse.m */; };
 		8490FAB316EC9C2000ED1E68 /* FCEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8490FAB216EC9C2000ED1E68 /* FCEditViewController.m */; };
+		84A6A6721868C2950031D858 /* FCSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A6A6711868C2950031D858 /* FCSummary.m */; };
 		84CD694C16EE479E0013FC49 /* FCStatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */; };
 		84CD694D16EE47A70013FC49 /* FCStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD694B16EE470B0013FC49 /* FCStat.m */; };
 		84DBFA7916E34A510048A93E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DBFA7816E34A510048A93E /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 		7CDA99CE16EF16CE00248D3B /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Reverse.m"; path = "FlatConsumption/NSArray+Reverse.m"; sourceTree = "<group>"; };
 		8490FAB116EC9C2000ED1E68 /* FCEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCEditViewController.h; path = FlatConsumption/FCEditViewController.h; sourceTree = "<group>"; };
 		8490FAB216EC9C2000ED1E68 /* FCEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCEditViewController.m; path = FlatConsumption/FCEditViewController.m; sourceTree = "<group>"; };
+		84A6A6701868C2950031D858 /* FCSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSummary.h; sourceTree = "<group>"; };
+		84A6A6711868C2950031D858 /* FCSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSummary.m; sourceTree = "<group>"; };
 		84CD694716EE46FC0013FC49 /* FCStatTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FCStatTableViewController.h; path = FlatConsumption/FCStatTableViewController.h; sourceTree = "<group>"; };
 		84CD694816EE46FC0013FC49 /* FCStatTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FCStatTableViewController.m; path = FlatConsumption/FCStatTableViewController.m; sourceTree = "<group>"; };
 		84CD694A16EE470B0013FC49 /* FCStat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FCStat.h; path = FlatConsumption/FCStat.h; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 				84CD694B16EE470B0013FC49 /* FCStat.m */,
 				7C4F6D4016E5DF9B00BCF9A0 /* FCCell.h */,
 				7C4F6D4116E5DF9B00BCF9A0 /* FCCell.m */,
+				84A6A6701868C2950031D858 /* FCSummary.h */,
+				84A6A6711868C2950031D858 /* FCSummary.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				84DBFABA16E366980048A93E /* FCAddViewController.m in Sources */,
 				7C4F6D4216E5DF9B00BCF9A0 /* FCCell.m in Sources */,
 				7CAA46D716E8A33800F1E5EA /* UITextField+UIFieldAttr.m in Sources */,
+				84A6A6721868C2950031D858 /* FCSummary.m in Sources */,
 				8490FAB316EC9C2000ED1E68 /* FCEditViewController.m in Sources */,
 				7CDA99CF16EF16CE00248D3B /* NSArray+Reverse.m in Sources */,
 			);

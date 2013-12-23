@@ -118,7 +118,29 @@
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         MonthPayment *selectedPayment = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        NSInteger count = [self.fetchedResultsController.fetchedObjects count];
+        NSInteger previousRow;
+        
+        if (IsAscending) {
+            if (!indexPath.row) {
+                previousRow= 0;
+            } else {
+                previousRow = indexPath.row - 1;
+            }
+        } else {
+            if (indexPath.row == count - 1) {
+                previousRow = indexPath.row;
+            } else {
+                previousRow = indexPath.row + 1;
+            }
+        }
+        
+        NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:previousRow inSection:0];
+        MonthPayment *previousMonthPayment = [self.fetchedResultsController objectAtIndexPath:previousIndexPath];
+        
         editVC.monthPayment = selectedPayment;
+        editVC.previousMonthPayment = previousMonthPayment;
     }
 }
 
@@ -163,8 +185,6 @@
 }
 
 - (void)resetBase {
-    //FCAppDelegate *appDelegate =  (FCAppDelegate *)[UIApplication sharedApplication].delegate;
-    
     NSArray *allObjects = [self.fetchedResultsController fetchedObjects];
     
     for (MonthPayment *payment in allObjects) {
@@ -193,12 +213,12 @@
     [self addDate:@"17.12.2007" kitHot:4 kitCold:2 batHot:8 batCold:15 energy:1100];
     [self addDate:@"21.01.2008" kitHot:4 kitCold:2 batHot:10 batCold:17 energy:1200];
     
-    [self addDate:@"4.02.2008" kitHot:5 kitCold:2 batHot:11 batCold:18 energy:1300];
-    [self addDate:@"21.03.2008" kitHot:5 kitCold:2 batHot:13 batCold:23 energy:1400];
-    [self addDate:@"24.04.2008" kitHot:6 kitCold:2 batHot:15 batCold:25 energy:1500];
-    [self addDate:@"12.05.2008" kitHot:7 kitCold:3 batHot:16 batCold:26 energy:1600];
-    [self addDate:@"11.06.2008" kitHot:7 kitCold:3 batHot:17 batCold:29 energy:1700];
-    [self addDate:@"30.08.2008" kitHot:8 kitCold:4 batHot:19 batCold:34 energy:1950];
+    [self addDate:@"4.02.2008" kitHot:5 kitCold:2 batHot:11 batCold:18 energy:1320];
+    [self addDate:@"21.03.2008" kitHot:5 kitCold:2 batHot:13 batCold:23 energy:1440];
+    [self addDate:@"24.04.2008" kitHot:6 kitCold:2 batHot:15 batCold:25 energy:1560];
+    [self addDate:@"12.05.2008" kitHot:7 kitCold:3 batHot:16 batCold:26 energy:1680];
+    [self addDate:@"11.06.2008" kitHot:7 kitCold:3 batHot:17 batCold:29 energy:1800];
+    [self addDate:@"30.08.2008" kitHot:8 kitCold:4 batHot:19 batCold:34 energy:1920];
     [self addDate:@"12.09.2008" kitHot:8 kitCold:4 batHot:20 batCold:34 energy:2000];
     [self addDate:@"16.10.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2050];
     [self addDate:@"14.11.2008" kitHot:9 kitCold:5 batHot:23 batCold:37 energy:2100];
@@ -231,8 +251,49 @@
     [self addDate:@"1.12.2010" kitHot:25 kitCold:9 batHot:62 batCold:131 energy:5200];
     [self addDate:@"3.01.2011" kitHot:26 kitCold:9 batHot:64 batCold:135 energy:5201];
     
+    [self addDate:@"1.02.2011" kitHot:27 kitCold:9 batHot:65 batCold:138 energy:5270];
+    [self addDate:@"1.03.2011" kitHot:27 kitCold:9 batHot:67 batCold:140 energy:5340];
+    [self addDate:@"1.04.2011" kitHot:27 kitCold:9 batHot:68 batCold:143 energy:5410];
+    [self addDate:@"1.05.2011" kitHot:28 kitCold:10 batHot:69 batCold:147 energy:5480];
+    [self addDate:@"1.06.2011" kitHot:28 kitCold:10 batHot:70 batCold:150 energy:5550];
+    [self addDate:@"4.07.2011" kitHot:28 kitCold:10 batHot:71 batCold:152 energy:5620];
+    [self addChangedDate:@"1.08.2011" kitHot:29 kitCold:10 batHot:72 batCold:155 energy:4500 from:5620 to:4444];
+    [self addDate:@"1.09.2011" kitHot:29 kitCold:10 batHot:74 batCold:160 energy:4561];
+    [self addDate:@"1.10.2011" kitHot:29 kitCold:10 batHot:76 batCold:165 energy:4683];
+    [self addDate:@"2.11.2011" kitHot:30 kitCold:11 batHot:78 batCold:170 energy:4818];
+    [self addDate:@"1.12.2011" kitHot:30 kitCold:11 batHot:79 batCold:174 energy:4945];
+    [self addDate:@"2.01.2012" kitHot:31 kitCold:11 batHot:82 batCold:179 energy:5051];
     
-    [self.tableView reloadData];
+    [self addDate:@"13.02.2012" kitHot:32 kitCold:12 batHot:85 batCold:184 energy:5188];
+    [self addDate:@"1.03.2012" kitHot:32 kitCold:12 batHot:87 batCold:187 energy:5244];
+    [self addDate:@"7.04.2012" kitHot:33 kitCold:12 batHot:90 batCold:192 energy:5367];
+    [self addDate:@"3.05.2012" kitHot:33 kitCold:12 batHot:92 batCold:197 energy:5460];
+    [self addDate:@"4.06.2012" kitHot:34 kitCold:12 batHot:94 batCold:204 energy:5572];
+    [self addDate:@"3.07.2012" kitHot:34 kitCold:12 batHot:96 batCold:209 energy:5660];
+    [self addDate:@"6.08.2012" kitHot:34 kitCold:12 batHot:98 batCold:216 energy:5794];
+    [self addDate:@"8.09.2012" kitHot:35 kitCold:14 batHot:100 batCold:221 energy:5923];
+    [self addDate:@"1.10.2012" kitHot:35 kitCold:14 batHot:102 batCold:225 energy:6010];
+    [self addDate:@"4.11.2012" kitHot:36 kitCold:14 batHot:105 batCold:230 energy:6124];
+    [self addDate:@"1.12.2012" kitHot:37 kitCold:14 batHot:107 batCold:234 energy:6210];
+    [self addDate:@"2.01.2013" kitHot:38 kitCold:15 batHot:110 batCold:239 energy:6313];
+    
+    [self addDate:@"3.02.2013" kitHot:38 kitCold:15 batHot:112 batCold:244 energy:6450];
+    [self addDate:@"1.04.2013" kitHot:39 kitCold:15 batHot:116 batCold:253 energy:6636];
+    [self addDate:@"1.05.2013" kitHot:40 kitCold:15 batHot:118 batCold:258 energy:6745];
+    [self addDate:@"1.06.2013" kitHot:40 kitCold:16 batHot:120 batCold:262 energy:6868];
+    [self addDate:@"2.07.2013" kitHot:41 kitCold:17 batHot:121 batCold:267 energy:6980];
+    [self addDate:@"1.08.2013" kitHot:41 kitCold:17 batHot:123 batCold:272 energy:7079];
+    [self addDate:@"1.09.2013" kitHot:42 kitCold:18 batHot:128 batCold:281 energy:7184];
+    [self addDate:@"5.10.2013" kitHot:42 kitCold:18 batHot:128 batCold:281 energy:7288];
+    [self addDate:@"1.11.2013" kitHot:42 kitCold:18 batHot:130 batCold:284 energy:7383];
+    [self addDate:@"1.12.2013" kitHot:43 kitCold:19 batHot:132 batCold:289 energy:7496];
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:3
+                                     target:self
+                                   selector:@selector(suspendedRefresh:)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 - (void)addDate:(NSString *)date
@@ -277,5 +338,9 @@
     
     NSError *saveError;
     [self.managedObjectContext save:&saveError];
+}
+
+- (void)suspendedRefresh:(id)sender {
+    [self.tableView reloadData];
 }
 @end

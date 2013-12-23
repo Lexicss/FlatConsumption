@@ -38,6 +38,10 @@ static const BOOL kIncludeCurrentYear = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone]; // iOS 7 specific
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

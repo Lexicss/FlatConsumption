@@ -7,6 +7,7 @@
 //
 
 #import "FCEditViewController.h"
+#import "FCSummary.h"
 
 #define NUMBERS_ONLY @"1234567890"
 #define CHARACTER_LIMIT 6
@@ -31,6 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone]; // iOS 7 specific
+    }
+    
 	[self setShoulSelectDate:NO];
     self.pickerInputView = [[UIDatePicker alloc] init];
     [self.pickerInputView setDatePickerMode:UIDatePickerModeDate];
@@ -68,6 +74,7 @@
         self.coldBathTextField.text = [self.monthPayment.coldBathWaterCount stringValue];
         self.energyTextField.text = [self.monthPayment.energyCount stringValue];
         [self.energySwitch setOn:[self.monthPayment.energyCountChanged boolValue]];
+        
         if ([self.energySwitch isOn]) {
             self.energyFromTextField.text = [self.monthPayment.energyCountOld stringValue];
             self.energyToTextField.text = [self.monthPayment.energyCountNew stringValue];
@@ -79,6 +86,20 @@
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(controllerTapped:)];
     [self.view addGestureRecognizer:tapGesture];
+    
+    FCSummary *summary = [[FCSummary alloc] initWithMonthPayment:self.monthPayment
+                                              andPreviousPayment:self.previousMonthPayment];
+    
+    _coldTextField.text = [self toStr:[summary coldWater]];
+    _hotTextField.text = [self toStr:[summary hotWater]];
+    _kitchenTextField.text = [self toStr:[summary kitchenWater]];
+    _bathTextField.text = [self toStr:[summary bathWater]];
+    _allTextField.text = [self toStr:[summary fullWater]];
+    _deltaEnergyTextField.text = [self toStr:[summary energy]];
+}
+
+- (NSString *) toStr:(NSInteger)value {
+    return [NSString stringWithFormat:@"%d",value];
 }
 
 - (void)didReceiveMemoryWarning {

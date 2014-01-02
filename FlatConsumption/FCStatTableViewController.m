@@ -62,18 +62,35 @@
     
     NSArray *currentArray = [statArray_ objectAtIndex:indexPath.section];
     NSString *yearString;
-    if ([self maxIndexInArray:currentArray] == indexPath.row) {
+    
+    NSArray *maxIndexes = [self maxIndexesInArray:currentArray];
+    NSArray *minIndexes = [self minIndexesInArray:currentArray];
+    
+    if ([maxIndexes containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         yearString = [NSString stringWithFormat:@"%@ - max",
                       [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
         cell.textLabel.textColor = [UIColor redColor];
-    } else if ([self minIndexInArray:currentArray] == indexPath.row) {
+    } else if ([minIndexes containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         yearString = [NSString stringWithFormat:@"%@ - min",
                       [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
         cell.textLabel.textColor = [UIColor greenColor];
     } else {
         yearString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue];
         cell.textLabel.textColor = [UIColor blackColor];
-    }
+    }    
+    
+//    if ([self maxIndexInArray:currentArray] == indexPath.row) {
+//        yearString = [NSString stringWithFormat:@"%@ - max",
+//                      [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+//        cell.textLabel.textColor = [UIColor redColor];
+//    } else if ([self minIndexInArray:currentArray] == indexPath.row) {
+//        yearString = [NSString stringWithFormat:@"%@ - min",
+//                      [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue]];
+//        cell.textLabel.textColor = [UIColor greenColor];
+//    } else {
+//        yearString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).yearNumber stringValue];
+//        cell.textLabel.textColor = [UIColor blackColor];
+//    }
     
     NSString *valueString = [((FCStat *)[currentArray objectAtIndex:indexPath.row]).valueNumber stringValue];
                              
@@ -128,8 +145,10 @@
 - (NSInteger)minIndexInArray:(NSArray *)statArray {
     NSInteger minValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
     NSInteger minIndex = 0;
+    
     for (NSInteger i = 1; i < [statArray count]; i++) {
-        NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        NSInteger value = 0;
+        
         if (value < minValue) {
             minValue = value;
             minIndex = i;
@@ -141,14 +160,60 @@
 - (NSInteger)maxIndexInArray:(NSArray *)statArray {
     NSInteger maxValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
     NSInteger maxIndex = 0;
+    
     for (NSInteger i = 1; i < [statArray count]; i++) {
         NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        
         if (value > maxValue) {
             maxValue = value;
             maxIndex = i;
         }
     }
     return maxIndex;
+}
+
+- (NSArray *)minIndexesInArray:(NSArray *)statArray {
+    NSMutableArray *indexes = [NSMutableArray array];
+    NSInteger minValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
+    NSInteger minIndex = 0;
+    [indexes addObject:[NSNumber numberWithInt:minIndex]];
+    
+    for (NSInteger i = 1; i < [statArray count]; i++) {
+        NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        
+        if (value < minValue) {
+            minValue = value;
+            minIndex = i;
+            [indexes removeAllObjects];
+            [indexes addObject:[NSNumber numberWithInt:minIndex]];
+        } else if (value == minIndex) {
+            [indexes addObject:[NSNumber numberWithInt:i]];
+        }
+    }
+    
+    return [NSArray arrayWithArray:indexes];
+}
+
+- (NSArray *)maxIndexesInArray:(NSArray *)statArray {
+    NSMutableArray *indexes = [NSMutableArray array];
+    NSInteger maxValue = [[(FCStat *)statArray[0] valueNumber] integerValue];
+    NSInteger maxIndex = 0;
+    [indexes addObject:[NSNumber numberWithInt:maxIndex]];
+    
+    for (NSInteger i = 1; i < [statArray count]; i++) {
+        NSInteger value = [((FCStat *)statArray[i]).valueNumber integerValue];
+        
+        if (value > maxValue) {
+            maxValue = value;
+            maxIndex = i;
+            [indexes removeAllObjects];
+            [indexes addObject:[NSNumber numberWithInt:maxIndex]];
+        } else if (value == maxValue) {
+            [indexes addObject:[NSNumber numberWithInt:i]];
+        }
+    }
+    
+    return [NSArray arrayWithArray:indexes];
 }
 
 @end
